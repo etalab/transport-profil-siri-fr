@@ -9885,6 +9885,13 @@ AffectedVehicleJourney</p>
 <td>Gravité de la SITUATION. La valeur par défaut est normale (<mark>cf
 6.7.4.1.4).</mark></td>
 </tr>
+<tr>
+<td>Affects</td>
+<td><em><strong><mark>Affects</mark></strong></em></td>
+<td>0:1</td>
+<td><em>AffectsScope</em></td>
+<td>Modèle structuré identifiant les parties de l'offre affetées par la conséquence. Voir 6.7.4.1.7.6.</td>  
+</tr>
 <tr class="odd">
 <td><em>Advice</em></td>
 <td><em><strong><mark>Advice</mark></strong></em></td>
