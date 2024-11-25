@@ -1,6 +1,6 @@
 ---
-title: "SIRI - Profil France v1.7"
-date: 2023-07-27T00:00:00+00:00
+title: "SIRI - Profil France v1.8"
+date: 2025-xx-xxT00:00:00+00:00
 draft: false
 tags: ["SIRI"]
 autonumbering: true
@@ -9,9 +9,9 @@ autonumbering: true
 Profil d'échange pour la description des informations temps-réel des
 réseaux de transport en commun
 
-**SIRI - Profil Français v1.7**
+**SIRI - Profil Français v1.8**
 
-**BNTRA-CN03-GT7_NF Profil SIRI FR_v1.7 20230727**
+**BNTRA-CN03-GT7_NF Profil SIRI FR_v1.8 2025MMDD**
 
 **Avant-propos**
 
@@ -9543,7 +9543,7 @@ l'utilisation du texte par défaut.</td>
 <tr class="odd">
 <td></td>
 <td><em><strong><mark>Affects</mark></strong></em></td>
-<td>0:1</td>
+<td><mark>1:1</mark></td>
 <td><em>+Structure</em></td>
 <td><p>Identification des parties du réseau de transport affectées par
 la SITUATION.</p>
