@@ -9890,7 +9890,7 @@ AffectedVehicleJourney</p>
 <td><em><strong><mark>Affects</mark></strong></em></td>
 <td>0:1</td>
 <td><em>AffectsScope</em></td>
-<td>Modèle structuré identifiant les parties de l'offre affetées par la conséquence. Voir 6.7.4.1.7.6.</td>  
+<td>Modèle structuré identifiant les parties de l'offre affectées par la conséquence. Voir 6.7.4.1.7.6.</td>  
 </tr>
 <tr class="odd">
 <td><em>Advice</em></td>
