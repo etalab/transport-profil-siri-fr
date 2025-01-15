@@ -17,4 +17,4 @@ L'équipe du Point d'Accès National aux données de transport (transport.data.g
 
 # Contributions
 
-Toute personne souhaitant contribuer aux travaux peuvent se rapprocher de l'animatrice du GT7 (@TuThoThai).
+Toute personne souhaitant contribuer aux travaux peut se rapprocher de l'animatrice du GT7 (@TuThoThai).
