@@ -10,7 +10,7 @@ Ce répertoire est composé :
 
 # Gouvernance
 
-Le contenu de ce répertoire le travail de normalisation au sein du GT7 (groupe de travail dédié à l'information voyageur et l'exploitation des services de mobilité). Ce groupe de travail s'insère dans les travaux de la CN03 (Commission nationale pour les transports publics) au sein du BNTRA (Bureau de normalisation pour les transports, les routes et leurs aménagements).
+Le contenu de ce répertoire est le travail de normalisation au sein du GT7 (groupe de travail dédié à l'information voyageur et l'exploitation des services de mobilité). Ce groupe de travail s'insère dans les travaux de la CN03 (Commission nationale pour les transports publics) au sein du BNTRA (Bureau de normalisation pour les transports, les routes et leurs aménagements).
 Toute personne peut poser des questions, faire des demandes de changement du profil France de SIRI en utilisant les `Issues` de ce répetoire. Si les discussions peuvent avoir lieu directement ici, les décisions finales seront prises par les membres du GT7 lors des plénières. Ces décisions sont, ensuite, avalisées formellement par la CN03 lors de ses plénières.
 
 L'équipe du Point d'Accès National aux données de transport (transport.data.gouv.fr) soutient le maintien technique de ce répertoire. Elle n'est pas responsable du contenu.
