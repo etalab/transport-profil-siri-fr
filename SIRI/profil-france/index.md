@@ -274,6 +274,17 @@ Français de NETEx: éléments communs,
 Dans le cadre de ce document, les termes et definitions applicables sont
 ceux définis dans le document CEN/EN 15531-1:2021 \[R5\].
 
+## Définition d'un StopPointRef
+
+Le profil SIRI France utilise à plusieurs reprise le champ StopPointRef qui contient un identifiant de Point d’arrêt. Cet identifiant désigne en fonction du contexte :
+
+* Un point d’arrêt planifié (Schedule Stop Point) : Discovery / ET / SM / CM / FM / SX
+
+* Un lieu d’arrêt  (Stop Place): CM /FM / SX / GM
+
+* Une zone d’embarquement (Quay) : FM / CM / GM / SX
+
+
 ## Définition d’un point d’arrêt
 
 La notion de point d’arrêt utilisée dans le cadre du présent profil fait
@@ -304,6 +315,8 @@ affectation (STOP ASSIGNMENT). La figure ci-après illustre ces relations
 (Profil NeTEx France \[R11.4\]).
 
 ![image](media/image1.png)
+
+
 
 ## Définitions de « Départ » et « Arrivée »
 
