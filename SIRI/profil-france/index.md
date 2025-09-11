@@ -3041,8 +3041,7 @@ messagerie pour plus de précisions.</span>
   - <span class="mark">Le champ facultatif «**FacilityLocation**» sera
     toujours présent et instancié,</span>
 
-  - <span class="mark">Les champs facultatifs «**SuitableFor**» et
-    «**NotSuitableFor**» restent facultatifs,</span>
+  - <span class="mark">Le champs facultatif «**AccessibilityAssessement**» reste facultatif,</span>
 
 - <span class="mark">Le champ facultatif «**Extension**» ne sera jamais
   présent.</span>
