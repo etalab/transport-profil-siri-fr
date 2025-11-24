@@ -3018,10 +3018,7 @@ messagerie pour plus de précisions.</span>
 
 <span class="mark">Dans le cadre du profil France :</span>
 
-- <span class="mark">le champ facultatif « Monitored » sera toujours
-  présent et égal à « true » (inutile de traiter les équipements pour
-  lesquels on n’a pas d'information temps réel ou au moins mis à jour
-  quotidiennement.</span>
+- <span class="mark">Le champ facultatif « Monitored » sera toujours présent et égal à « true » (inutile de traiter les équipements pour lesquels on n’a pas d'information temps réel ou au moins mis à jour quotidiennement).</span>
 
 - <span class="mark">Le champ facultatif «Facility» sera toujours
   présent :</span>
@@ -3041,43 +3038,14 @@ messagerie pour plus de précisions.</span>
   - <span class="mark">Le champ facultatif «**FacilityLocation**» sera
     toujours présent et instancié,</span>
 
-  - <span class="mark">Les champs facultatifs «**SuitableFor**» et
-    «**NotSuitableFor**» restent facultatifs,</span>
+  - <span class="mark">Le champ «**AccessibilityAssessment**» reste facultatif,</span>
 
 - <span class="mark">Le champ facultatif «**Extension**» ne sera jamais
   présent.</span>
 
 <span class="mark">Les valeurs possibles pour ces différents champs
 seront celles proposées par SIRI, mais pourront être réduites aux
-valeurs jugées pertinentes dans le contexte France lors de
-l’implémentation du service , par exemple pour «**SuitableFor**» et
-«**NotSuitableFor**» on trouvera des possibilités comme :</span>
-
-- <span class="mark">auditory,</span>
-
-- <span class="mark">wheelChair,</span>
-
-- <span class="mark">motorizedWheelChair,</span>
-
-- <span class="mark">mobility,</span>
-
-- <span class="mark">visual,</span>
-
-- <span class="mark">cognitive,</span>
-
-- <span class="mark">psychiatric,</span>
-
-- <span class="mark">incapacitingdisease,</span>
-
-- <span class="mark">youngPassenger,</span>
-
-- <span class="mark">luggageEncumbered,</span>
-
-- <span class="mark">stroller,</span>
-
-- <span class="mark">elderly,</span>
-
-- <span class="mark">otherSpecificNeed.</span>
+valeurs jugées pertinentes dans le contexte France. Se reporter au profil France NeTEx pour l’interprétation des différents champs contenus dans «**AccessibilityAssessment**», notamment dans la partie Accessibilité du profil. </span>
 
 ## Gestion des versions du profil SIRI FR
 
