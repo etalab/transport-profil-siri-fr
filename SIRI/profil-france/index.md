@@ -10405,17 +10405,17 @@ ci-dessous.</p>
 </tbody>
 </table>
 
-**Examples d'utilisation de la structure 'Affect'**
+**Exemples d'utilisation de la structure 'Affect'**
 
 *Association avec un ou plusieurs zones d'embarquement*
 ```xml
 <siri:Affects>
   <siri:StopPoints>
     <siri:AffectedStopPoint>
-      <siri:StopPointRef>3534</siri:StopPointRef>
+      <siri:StopPointRef>FR:78197:Quay:3534:LOC</siri:StopPointRef>
     </siri:AffectedStopPoint>
     <siri:AffectedStopPoint>
-      <siri:StopPointRef>3535</siri:StopPointRef>
+      <siri:StopPointRef>FR:78197:Quay:3535:LOC</siri:StopPointRef>
     </siri:AffectedStopPoint>
   </siri:StopPoints>
 </siri:Affects>
@@ -10426,10 +10426,10 @@ ci-dessous.</p>
 <siri:Affects>
   <siri:StopPlaces>
     <siri:AffectedStopPlace>
-      <siri:StopPlaceRef>3534</siri:StopPlaceRef>
+      <siri:StopPlaceRef>FR:78197:StopPlace:3534<:LOC/siri:StopPlaceRef>
     </siri:AffectedStopPlace>
     <siri:AffectedStopPlace>
-      <siri:StopPlaceRef>3535</siri:StopPlaceRef>
+      <siri:StopPlaceRef>FR:78197:StopPlace:3535:LOC</siri:StopPlaceRef>
     </siri:AffectedStopPlace>
   </siri:StopPoints>
 </siri:Affects>
@@ -10440,11 +10440,11 @@ ci-dessous.</p>
 <siri:Affects>
   <siri:StopPoints>
     <siri:AffectedStopPoint>
-      <siri:StopPointRef>3534</siri:StopPointRef>
+      <siri:StopPointRef>FR:78197:Quay:3534:LOC</siri:StopPointRef>
 
       <siri:Lines>
         <siri:AffectedLine>
-          <siri:LineRef>00673</siri:LineRef>
+          <siri:LineRef>FR:78197:Line:00673:LOC</siri:LineRef>
         </siri:AffectedLine>
       </siri:Lines>
     </siri:AffectedStopPoint>
@@ -10456,10 +10456,10 @@ ci-dessous.</p>
 ```xml
 </siri:AffectedNetwork>
   <siri:AffectedLine>
-    <siri:LineRef>00673</siri:LineRef>
+    <siri:LineRef>FR:78197:Line:00673:LOC</siri:LineRef>
   </siri:AffectedLine>
   <siri:AffectedLine>
-    <siri:LineRef>89121</siri:LineRef>
+    <siri:LineRef>FR:78197:Line:89121:LOC</siri:LineRef>
   </siri:AffectedLine>
 </siri:AffectedNetwork>
 ```
