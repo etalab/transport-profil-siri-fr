@@ -8799,7 +8799,7 @@ communication un message (prompt) et sa zone de diffusion (Affect).
 
 Pour rappel, le profil France fait le choix suivant pour la communication d'un message :
 - Les messages d'informations associées à une perturbation sont échangés via le champ "Prompt" de la structure "ActionData". L'accès à ce champ est réalisé en parcourant le chemin suivant : `PtSituationElement/PublishingActions/Publish...Action/ActionData/Prompt.`
-- Le chemin `PtSituationElement/PublishingActions/PublishingAction/PassengerInformationAction/ActionData/Prompt` n'est pas utilisé dans le cadre du profil SIRI France.
+- Le chemin `PtSituationElement/PublishingActions/PublishingAction/PassengerInformationAction/ActionData/Prompt` (et plus généralement l'ensemble du PassengerInformationAction) n'est pas utilisé dans le cadre du profil SIRI France.
 
 Les tableaux de définition du service Situation Exchange, ci-dessous,
 intègrent les éléments necessaires pour assurer la compatibilité avec
