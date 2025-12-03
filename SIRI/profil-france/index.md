@@ -9995,60 +9995,16 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 |--------------------------|--------------|---------------------------------------------|
 | ***PublishToWebAction*** | *+Structure* | Paramètres de publication sur le canal Web. |
 
-<table>
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 18%" />
-<col style="width: 5%" />
-<col style="width: 11%" />
-<col style="width: 56%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><em>ParameterisedAction</em></td>
-<td><em><strong><mark>ParameterisedAction</mark></strong></em></td>
-<td>0:1</td>
-<td><em>+Structure</em></td>
-<td><p>Hérité de <em><strong>ParameterisedAction</strong></em>.</p>
-<p><mark><em><strong>ParameterisedAction</strong></em> : utilisé pour
+|                |                                                        |      |              |                                                                          |
+|----------------|--------------------------------------------------------|------|--------------|--------------------------------------------------------------------------|
+| *ParameterisedAction* | ***<span class="mark">ParameterisedAction</span>***     | 0:1 | *+Structure* | <p>Hérité de <em><strong>ParameterisedAction</strong></em>.</p>
+<p><span class="mark"><em><strong>ParameterisedAction</strong></em> : utilisé pour
 permettre de définir un message à publier sur le web cf
-6.7.4.1.7.6</mark></p></td>
-</tr>
-<tr class="even">
-<td> </td>
-<td><em><strong><mark>Incidents</mark></strong></em></td>
-<td>0:1</td>
-<td><em>boolean</em></td>
-<td>A inclure dans les listes de SITUATION sur le site Web. La valeur
-par défaut est 'vrai'.</td>
-</tr>
-<tr class="odd">
-<td> </td>
-<td><em><strong><mark>HomePage</mark></strong></em></td>
-<td>0:1</td>
-<td><em>boolean</em></td>
-<td>A inclure sur la page d'accueil du site Web. La valeur par défaut
-est 'faux'.</td>
-</tr>
-<tr class="even">
-<td> </td>
-<td><em><strong><mark>Ticker</mark></strong></em></td>
-<td>0:1</td>
-<td><em>boolean</em></td>
-<td>A inclure dans la bande de défilement mobile. La valeur par défaut
-est 'faux'</td>
-</tr>
-<tr class="odd">
-<td> </td>
-<td><em><strong><mark>SocialNetwork</mark></strong></em></td>
-<td>0:*</td>
-<td><em>string</em></td>
-<td>A inclure dans le RÉSEAU social indiqué par ce nom. La valeur
-possible pourrait être "twitter.com", "facebook.com", "vk.com" et ainsi
-de suite</td>
-</tr>
-</tbody>
-</table>
+6.7.4.1.7.6</span class="mark"></p>         |
+|                | ***<span class="mark">Incidents</span>***  | 0:1 | *boolean* |	À inclure dans les listes de SITUATION sur le site Web. La valeur par défaut est 'vrai'. |
+|                | ***<span class="mark">HomePage</span>*** | 0:1 | *boolean* | À inclure sur la page d'accueil du site Web. La valeur par défaut est 'faux'.   |
+|                | ***<span class="mark">Ticker</span>***    | 0:1 | *boolean* | À inclure dans la bande de défilement mobile. La valeur par défaut est 'faux'          |
+|                | ***<span class="mark">SocialNetwork</span>***      | 0:\* | *string* | À inclure dans le RÉSEAU social indiqué par ce nom. La valeur possible pourrait être "x.com", "facebook.com", "vk.com" et ainsi de suite             |
 
 ###### Description de la structure “*PublishToMobileAction”*
 
@@ -10752,11 +10708,16 @@ l’action</mark>.</p></td>
 | *SimpleActionStructure* | ***<span class="mark">ActionStatus</span>***                              | 0:1  |               | *enum*       | Status de l’Action. cf 6.7.4.1.7.7.1.                                              |
 |                         | ***<span class="mark">Description</span>***                               | 0:1  |               | *nlString*   | Description de l’action.                                                           |
 |                         | ***<span class="mark">ActionData</span>***                                | 0:\* |               | *+Structure* | Information associée à l’action, cf lignes ci-dessous.                             |
-|                         | **➞ *<span class="mark">Name</span>***                                    | 1:1  | *xsd:NMTOKEN* |              | Nom de l’action.                                                                   |
-|                         | **➞*<span class="mark">Prompt</span>***                                   | 0:\* | *nlString*    |              | <span class="mark">Libéllé du message associé au publishingAction.</span>          |
+|                         | *➞ <span class="mark">Name</span>*                                    | 0:1  | *xsd:NMTOKEN* |              | Nom de l’action.                                                                   |
+|                         | *➞ <span class="mark">Type</span>*                                    | 1:1  | *xsd:NMTOKEN* |              | Type de données de l’action.                                                                   |
+|                         | *➞ <span class="mark">Value</span>*                                    | 0:\*  | *any* |              | Valeur pour l’action.                                                                   |
+|                         | *➞<span class="mark">Prompt</span>*                                   | 0:\* | *nlString*    |              | <span class="mark">Libéllé du message associé au publishingAction.</span>          |
 |                         | <span class="mark"></span>**➞*<span class="mark">PublishAtScope</span>*** | 0:1  | *+Structure*  |              | <span class="mark">Zone de diffusion du message ‘Prompt’.</span>                   |
-|                         | ⇉ ***<span class="mark">ScopeType</span>***                               | 0:1  | *enum*        |              | <span class="mark">Type de l’action (cf 6.7.4.1.5).</span>                         |
-|                         | ⇉ ***<span class="mark">Affects</span>***                                 | 0:1  | *+Structure*  |              | <span class="mark">Zone de diffusion du message ‘*prompt’*, cf 6.7.4.1.7.6.</span> |
+|                         | ⇉ *<span class="mark">ScopeType</span>*                               | 1:1  | *enum*        |              | <span class="mark">Type de l’action (cf 6.7.4.1.5).</span>                         |
+|                         | ⇉ *<span class="mark">Affects</span>*                                 | 1:1  | *+Structure*  |              | <span class="mark">Zone de diffusion du message ‘*prompt’*, cf 6.7.4.1.7.6.</span> |
+|                         | *PublicationWindow*                                    | 0:\*  | *→ClosedTimestampRangeStructure* |              | Définit un certain nombre de fenêtres temporelles de publication. Lorsqu'il n'est pas envoyé, les fenêtres temporelles de publication de niveau supérieur sont valides. Peut être remplacé par un niveau inférieur.                                                                   |
+|                         | *➞StartTime*                                    | 1:1  | *xsd:dateTime* |              | Le timestamp du début de publication (inclusif)                                                                   |
+|                         | *➞EndTime*                                    | 1:1  | *xsd:dateTime* |              | Le timestamp de la fin de publication (inclusif)                                                                   |
 
 <h7>Description de l’enum ‘ActionStatus’</h7>
 
