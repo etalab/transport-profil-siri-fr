@@ -8804,7 +8804,7 @@ Les tableaux de définition du service Situation Exchange, ci-dessous, intègren
 
 |                                |              |                                                                     |
 |--------------------------------|--------------|---------------------------------------------------------------------|
-| ***SituationExchangeRequest*** | *+Structure* | Requête pour obetnir des informations sur une situation |
+| ***SituationExchangeRequest*** | *+Structure* | Requête pour obtenir des informations sur une situation |
 
 <table class="no_h>
 <tbody>
