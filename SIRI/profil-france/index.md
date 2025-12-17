@@ -3430,9 +3430,7 @@ Aller/Retour).</p>
 <p><mark>La sélection de ce champ n’est pas dans la logique du reste du
 profil (plutôt porté sur Destination, voir plus bas) mais est maintenu
 du fait de la cardinalité imposée par SIRI</mark> (le champ est
-obligatoire dans la description XSD de SIRI et doit donc être maintenu,
-il pourra toutefois être laissé vide, sans que cela ne pose
-problème…)</p></td>
+obligatoire dans la description XSD de SIRI et doit donc être maintenu et ne peut être vide.)</p></td>
 </tr>
 <tr class="even">
 <td></td>
