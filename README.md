@@ -4,9 +4,11 @@ Ce espace de travail regroupe l'ensemble des éléments du profil France de SIRI
 
 # Structure
 
-Cet espace de travail est composé :
-- d'un dossier `SIRI` qui comprend le profil France au format Markdown
-- d'un dossier `originaux` qui comprend le dernier document du profil publié par le GT7 après appobation du CN03.
+## Dossiers 📁
+
+Dans le dossier `SIRI` de cet espace de travail, on trouve un sous-dossier pour le profil France qui comprend :
+- un fichier `index.md` qui comprend le texte du profil,
+- un dossier `media` pour toutes les illustrations.
 
 # Gouvernance
 
