@@ -9792,9 +9792,11 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 | ***SIRI-SX*** | **Description** |
 |---------------|-----------------|
 | *unknown*     | Inconnu         |
+| *verySlight*  | Très léger      |
 | *slight*      | Léger           |
 | *normal*      | Normal          |
 | *severe*      | Sévère          |
+| *verySevere*  | Très sévère     |
 | *noImpact*    | Pas d’impact    |
 | *undefined*   | Non défini      |
 
