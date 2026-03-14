@@ -2289,15 +2289,33 @@ est plus facile à maîtriser.</span>
 
 </div>
 
-<span class="mark">Cette solution est peu coûteuse et simple à mettre en
-oeuvre, car elle ne repose que sur une configuration du serveur
-HTTP.</span>
+<span class="mark">Cette solution est peu coûteuse et simple à mettre en oeuvre, car elle ne repose que sur une configuration du serveur HTTP. À noter qu'elle n'est pas suffisante seule, elle doit s'accompagner de la mise en place des autres règles de sécurité standard.</span>
 
-<span class="mark">En complément de ces éléments, on retrouve tous les
-éléments de sécurité classique du monde du Web : firewall, architecture
-avec DMZ, etc. Cependant ces éléments n'ont pas d’impact sur les
-échanges SIRI eux-mêmes et sont du ressort de chaque intervenant (points
-sur lesquels ils auront une parfaite autonomie).</span>
+<span class="mark"><p>Pour les entêtes HTTP, il est fortement conseillé d'utiliser la même structure standard pour tout échange au profil France de type 'X-Siri-Requestor' qui reprend la valeur du 'RequestorRef' (ou celle du 'ProducerRef' dans les notifications), se trouvant dans le contenu XML.</p><p>Une telle identification, avant la lecture du XML, permet de mettre en place toutes les mesures de sécurité nécessaires en amont du serveur SIRI et la lecture des ééchanges.</p><p>Le profil France recommande un paramétrage comme ci-dessous :</p></span>
+
+```xml
+curl --header 'X-Siri-RequestorRef: opendata' --header 'Content-Type: application/xml' -d@- https://serveur.link/exchange.point/siri <<XML
+<?xml version='1.0' encoding='utf-8'?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+  <S:Body>
+    <sw:CheckStatus xmlns:siri="http://www.siri.org.uk/siri" xmlns:sw="http://wsdl.siri.org.uk">
+      <Request>
+        <siri:RequestTimestamp>2025-01-27T16:32:13.860+01:00</siri:RequestTimestamp>
+        <siri:RequestorRef>opendata</siri:RequestorRef>
+        <siri:MessageIdentifier>Test</siri:MessageIdentifier>
+      </Request>
+      <RequestExtension/>
+    </sw:CheckStatus>
+  </S:Body>
+</S:Envelope>
+XML
+```
+<span class="mark"><p>En outre, il est important de rappeler que les valeurs utilisées pour les éléments tels que 'RequestorRef' ou 'ProducerRef', etc. doivent être considérées comme des clés d'accès par les utilisateurs, appplications, etc. En tant que clés d'accès, elles doivent donc être créées, stockées, diffusées avec les règles de sécurité qui s'imposent.</p>
+<p>Ces valeurs doivent également contenir des caractères aléatoires et il est conseillé qu'elles soient donc de la forme "monsae-Pu9kaosh2thu3pohs4chaeph" plutôt que "monsae".</p></span>
+
+<span class="mark">En complément de ces éléments, on retrouve tous les éléments de sécurité classique du monde du Web : firewall, architecture avec DMZ, etc. Cependant ces éléments n'ont pas d’impact sur les échanges SIRI eux-mêmes et sont du ressort de chaque intervenant (points sur lesquels ils auront une parfaite autonomie).</span>
+
+<span class="mark"><p>Enfin, si certains souhaitent privilégier des mécanismes de sécurité plus robustes, il est fortement recommandé d'utiliser [l'OAuth 2.0 et son "Client Credentials Grant Type" qui est standard et pris en charge par la plupart des outils HTTP classiques](https://oauth.net/2/grant-types/client-credentials/). Cependant, ce type d'authentification ne doit pas être utilisé pour limiter l'accès à l'open data.</p><p>À noter que de tels mécanismes sont également utilisés par les serveurs [SIRI DDIP Suisse](https://www.oev-info.ch/sites/default/files/2023-04/siri_realisation-guide_pt_ch_v0.9.0.pdf).</p></span>
 
 <div class="no_h">
 
