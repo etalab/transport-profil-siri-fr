@@ -9254,8 +9254,7 @@ d'énumération</p>
 <td><em><strong>Publication</strong></em></td>
 <td>0:*</td>
 <td><em>PublicationStatus</em></td>
-<td>Statut de publication. Un ensemble spécifié de sous-états auxquels
-une SITUATION peut être attribuée.</td>
+<td><p>Cet attribut est déprécié dans SIRI en faveur de Progress (voir plus haut).</p><p>Statut de publication. Un ensemble spécifié de sous-états auxquels une SITUATION peut être attribuée.</p></td>
 </tr>
 <tr class="odd">
 <td><em>PtSituationBodyGroup\TemporalGroup</em></td>
