@@ -9670,7 +9670,7 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 |problèmes techniques (*technical problem*) | *vehicleFailure* | Panne du véhicule |
 |problèmes techniques (*technical problem*) | *serviceDisruption* | Interruption de service |
 |problèmes techniques (*technical problem*) | *doorFailure* | Panne d'une porte |
-|problèmes techniques (*technical problem*) | *lightingFailure* | Panne d'éclaraige  |
+|problèmes techniques (*technical problem*) | *lightingFailure* | Panne d'éclairage  |
 |problèmes techniques (*technical problem*) | *pointsProblem* | Problème mécanique  |
 |problèmes techniques (*technical problem*) | *pointsFailure* | Panne mécanique |
 |problèmes techniques (*technical problem*) | *signalProblem* | Problème de signalisation |
