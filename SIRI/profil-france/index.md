@@ -2788,17 +2788,10 @@ Service » proposé par SIRI.</mark></p></td>
 <p><mark>Cette requête permet d'obtenir la liste de tous les équipements
 et services connus du système (voir la structure retournée,
 ci-dessous).</mark></p>
-<p><mark>Note: ce service n'est pas encore disponible dans la version
-actuelle de SIRI, mais fait partie des nouveaux services en cours de
-définition.</mark></p></td>
+</td>
 </tr>
 </tbody>
 </table>
-
-<span class="mark">Ces requêtes ne seront déployées que dans les cas où
-un référentiel théorique n’aura pas pu être identifié : leur
-implémentation est donc facultative et devra, autant que faire se peut,
-être temporaire.</span>
 
 <span class="mark">Les services retenus sont donc : *StopPointsRequest*,
 *LinesRequest*, *InfoChannelRequest* et *FacilityRequest*. Les
@@ -2812,7 +2805,7 @@ Message »).</span>
 <span class="mark">Les informations qu'ils procurent sont présentées
 ci-dessous :</span>
 
-<span class="mark">Note: les services de découvertes SIRI permettent de
+<span class="mark">Note : les services de découvertes SIRI permettent de
 connaître les noms des arrêts et lignes et l'appartenance des arrêts aux
 lignes mais en aucun cas la structure (itinéraire-Route, mission-Journey
 pattern et à fortiori course-vehicle Journey). Il conviendra donc de se
