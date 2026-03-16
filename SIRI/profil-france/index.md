@@ -9731,7 +9731,7 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 |environnement (*environmental*) | *flooding* | Inondation |
 |environnement (*environmental*) | *lowWaterLevel* | Niveau d'eau bas |
 |environnement (*environmental*) | *riskOfFlooding* | Risque d'inondation |
-|environnement (*environmental*) | *highWaterLevel* | Niveau d'eau élévé |
+|environnement (*environmental*) | *highWaterLevel* | Niveau d'eau élevé |
 |environnement (*environmental*) | *fallenLeaves* | Chute de feuilles |
 |environnement (*environmental*) | *fallenTree* | Chute d'arbre |
 |environnement (*environmental*) | *landslide* | Glissement de terrain |
