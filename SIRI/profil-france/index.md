@@ -4021,9 +4021,9 @@ SIRI, <del>,</del> référencer un afficheur, par exemple).</mark></th>
 <tr class="odd">
 <td></td>
 <td><em><strong><mark>Order</mark></strong></em></td>
-<td>0:1</td>
+<td>1:1</td>
 <td><em>xsd:positive­Integer</em></td>
-<td>Numéro d'ordre de l'arrêt dans la mission.</td>
+<td>Numéro d'ordre de l'arrêt dans la mission.<mark>Obligatoire dans le profil France pour correspondre au choix fait dans RecordedCall.</mark></td>
 </tr>
 <tr class="even">
 <td></td>
