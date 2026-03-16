@@ -9477,8 +9477,7 @@ l'utilisation du texte par défaut.</td>
 <td><em><strong><mark>Affects</mark></strong></em></td>
 <td><mark>1:1</mark></td>
 <td><em>+Structure</em></td>
-<td><p>Identification des parties du réseau de transport affectées par
-la SITUATION.</p>
+<td><p>Liste des objets directement concernés par la SITUATION.</p>
 <p>Voir 6.7.4.1.7.6.</p></td>
 </tr>
 <tr class="even">
@@ -9822,7 +9821,7 @@ AffectedVehicleJourney</p>
 <td><em><strong><mark>Affects</mark></strong></em></td>
 <td>0:1</td>
 <td><em>AffectsScope</em></td>
-<td>Modèle structuré identifiant les parties de l'offre affectées par la conséquence. Voir 6.7.4.1.7.6.</td>  
+<td>Liste exhaustive des objets directements concernés par la CONSEQUENCE. Si cette balise n'est pas présente, seuls les objets PtSituationElement\Affects sont considérés pour cette CONSEQUENCE. Voir 6.7.4.1.7.6.</td>  
 </tr>
 <tr class="odd">
 <td><em>Advice</em></td>
