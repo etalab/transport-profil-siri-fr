@@ -15,7 +15,7 @@ réseaux de transport en commun
 
 **Avant-propos**
 
-Ce document présente de façon détaillée le profil SIRI National France
+Ce document présente de façon détaillée le profil France de SIRI
 (également appelé « local agreement SIRI France »), soit la déclinaison
 de la norme SIRI aux besoins métiers français. Il contient tous les
 éléments nécessaires à sa compréhension, mais ne propose ni une
@@ -63,7 +63,7 @@ par l’ensemble de documents normatifs suivants :
   Model for Public Transport et Transmodel in UML (projet SITP 2,version
   0.1 04/09/2003)
 
-- NEPTUNE : Projet de norme AFNOR - PR NF P99-506 Décembre 2009
+- NeTEx : Network Timetable EXchange (CEN/TS 16614-1 à 6)
 
 Dans le document, les règles propres au profil sont présentées sur
 <span class="mark">fond gris</span>. Les autres règles ont plus un rôle
@@ -115,11 +115,9 @@ participation initiale de la France, l’Allemagne, la Norvège et le
 Royaume-Uni.
 
 Le groupe de travail français, CN03/GT7 (miroir du groupe européen CEN
-TC278 / WG3 / SG7) a adopté le format d’échanges NEPTUNE (sous-ensemble,
-ou profil, du format TRIDENT issu d'un projet Européen) comme base pour
-les échanges de données de transport en commun. Le standard NEPTUNE,
+TC278 / WG3 / SG7) a adopté le format d’échanges NeTEX (CEN/TS 16614-1 à 6) comme base pour
+les échanges de données de transport en commun. Le standard NeTEx,
 aborde essentiellement les aspects référentiels des données échangées.
-Il est normalisé à l’AFNOR sous la référence PR NF P99-506.
 
 Afin de fournir aux transporteurs et aux industriels un cadre normalisé
 pour l’échange de données concernant l’information temps réel, le CEN
@@ -136,7 +134,7 @@ Le présent document contient le profil d’utilisation de cette
 spécification technique dans un contexte national français.
 
 Il est complété par un ensemble de documents d’accompagnement : se
-reporter au paragraphe Documents d’accompagnement du présent document.
+reporter aux annexes en fin de profil.
 
 #  Domaine d’application
 
@@ -4023,9 +4021,9 @@ SIRI, <del>,</del> référencer un afficheur, par exemple).</mark></th>
 <tr class="odd">
 <td></td>
 <td><em><strong><mark>Order</mark></strong></em></td>
-<td>0:1</td>
+<td>1:1</td>
 <td><em>xsd:positive­Integer</em></td>
-<td>Numéro d'ordre de l'arrêt dans la mission.</td>
+<td>Numéro d'ordre de l'arrêt dans la mission.<mark>Obligatoire dans le profil France pour correspondre au choix fait dans RecordedCall.</mark></td>
 </tr>
 <tr class="even">
 <td></td>
