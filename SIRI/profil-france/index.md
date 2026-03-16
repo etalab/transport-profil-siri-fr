@@ -9719,7 +9719,7 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 |accident (*accident*) | *vehicleStruckAnimal* | Collision avec un animal |
 |accident (*accident*) | *derailment* | Déraillement |
 |accident (*accident*) | *collision* | Collision |
-|accident (*accident*) | *levelCrossingAccident* | Incidnet à un passage à niveau |
+|accident (*accident*) | *levelCrossingAccident* | Incident à un passage à niveau |
 |environnement (*environmental*) | *poorWeather* | Mauvais temps  |
 |environnement (*environmental*) | *fog* | Brouillard |
 |environnement (*environmental*) | *heavySnowfall* | Fortes chutes de neige |
