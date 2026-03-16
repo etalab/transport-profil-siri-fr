@@ -2731,11 +2731,11 @@ course.</span>
 
 ## Service SIRI Discovery
 
-SIRI propose des services qui permettent d’effectuer l’échange de données référentielles (Discovery Services). 
-
-Dans le cadre du profil France, l'utilisation des flux NeTEx sera privilégiée aux services Discovery SIRI pour la définition des points d'arrêt, des lignes et des "Facilities". En particulier dans le cadre d'échange de données en Open Data. Les services Discovery sont néanmoins maintenus dans le profil France de SIRI pour :
+SIRI propose des services qui permettent d’effectuer l’échange de données référentielles (Discovery Services). Dans le cadre du profil France de SIRI, il est tout à fait possible de les utiliser pour : 
 - La conduite de tests sur les flux SIRI en open data,
 - La maintien de la capacité de SIRI d'être auto-porteur dans les échanges de données pour l'information voyageur, sans avoir recours à d'autres interfaces d'échange.
+
+Note : Que ce soit dans les échanges pour l'open data ou entre systèmes, ces services n'ont pas pour vocation de remplacer l'utilisation des flux NeTEx qui sont beaucoup plus complets pour la description de l'offre planifiée de transport public (topologie du réseau, des arrêts, des lignes, de l'accessibilité, des équipements, etc.). Les 
 
 Le tableau ci-dessous présente les services disponibles et ceux qui sont retenus pour le profil France de SIRI :
 
