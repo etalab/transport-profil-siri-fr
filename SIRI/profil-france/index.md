@@ -9658,7 +9658,7 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 |sécurité (*safety relevant*) | *stationOverrun* | Dépassement de station |
 |sécurité (*safety relevant*) | *passengersBlockingDoors* | Passager bloquant les portes |
 |sécurité (*safety relevant*) | *defectiveSecuritySystem* | Système de sécurité défectueux |
-|sécurité (*safety relevant*) | *overcrowded* | Surchage passagère |
+|sécurité (*safety relevant*) | *overcrowded* | Surcharge passagère |
 |sécurité (*safety relevant*) | *borderControl* | Police aux frontières |
 |sécurité (*safety relevant*) | *unattendedBag* | Bagage oublié |
 |sécurité (*safety relevant*) | *telephonedThreat* | Menace téléphonique |
