@@ -2273,12 +2273,9 @@ de simplifier la compatibilité avec certains systèmes existants.
 
 ### Réseau et sécurité
 
-<span class="mark">La gestion de la sécurité et du contrôle d'accès
-n'est pas à proprement parler du ressort de SIRI, mais repose sur la
-couche de transport réseau retenue.</span>
+<span class="mark">Cette section du profil France est principalement dédiée à la sécurisation des échanges SIRI entre systèmes, soit les cas d'usage identifiés suivants : Diffusion inter Systèmes, Diffusion Terminaux légers, Centrale de mobilité, Gestion des perturbations, Information PMR et Alimentation d'un concentrateur.</span>
 
-<span class="mark">SIRI étant un protocole inter-systèmes, la sécurité
-est plus facile à maîtriser.</span>
+<span class="mark"><p>La gestion de la sécurité et du contrôle d'accès n'est pas à proprement parler du ressort de SIRI, mais repose sur la couche de transport réseau retenue. Elle doit faire l'objet d'une étude par les reponsables de sécurité du réseau des systèmes échangeant des flux SIRI.</p><p>SIRI étant un protocole inter-systèmes, la sécurité des échanges sont souvent le fruit d'un accord entre les deux parties prenantes des échanges.</p></span>
 
 <div class="no_h">
 
@@ -2287,15 +2284,31 @@ est plus facile à maîtriser.</span>
 
 </div>
 
-<span class="mark">Cette solution est peu coûteuse et simple à mettre en
-oeuvre, car elle ne repose que sur une configuration du serveur
-HTTP.</span>
+<span class="mark">Cette solution est peu coûteuse et simple à mettre en oeuvre, car elle ne repose que sur une configuration du serveur HTTP. À noter qu'elle n'est pas suffisante seule, elle doit s'accompagner de la mise en place des autres règles de sécurité standard.</span>
 
-<span class="mark">En complément de ces éléments, on retrouve tous les
-éléments de sécurité classique du monde du Web : firewall, architecture
-avec DMZ, etc. Cependant ces éléments n'ont pas d’impact sur les
-échanges SIRI eux-mêmes et sont du ressort de chaque intervenant (points
-sur lesquels ils auront une parfaite autonomie).</span>
+<span class="mark"><p>Pour les entêtes HTTP, il est fortement conseillé d'utiliser la même structure standard pour tout échange au profil France de type 'X-Siri-Requestor' qui reprend la valeur du 'RequestorRef' (ou celle du 'ProducerRef' dans les notifications), se trouvant dans le contenu XML.</p><p>Une telle identification, avant la lecture du XML, permet de mettre en place toutes les mesures de sécurité nécessaires en amont du serveur SIRI et la lecture des échanges.</p><p>Le profil France recommande un paramétrage comme ci-dessous :</p></span>
+
+```xml
+curl --header 'X-Siri-RequestorRef: diffusion-ecran' --header 'Content-Type: application/xml' -d@- https://serveur.link/exchange.point/siri <<XML
+<?xml version='1.0' encoding='utf-8'?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+  <S:Body>
+    <sw:CheckStatus xmlns:siri="http://www.siri.org.uk/siri" xmlns:sw="http://wsdl.siri.org.uk">
+      <Request>
+        <siri:RequestTimestamp>2025-01-27T16:32:13.860+01:00</siri:RequestTimestamp>
+        <siri:RequestorRef>diffusion-ecran</siri:RequestorRef>
+        <siri:MessageIdentifier>Test</siri:MessageIdentifier>
+      </Request>
+      <RequestExtension/>
+    </sw:CheckStatus>
+  </S:Body>
+</S:Envelope>
+XML
+```
+<span class="mark"><p>En outre, il est important de rappeler que les valeurs utilisées pour les éléments tels que 'RequestorRef' ou 'ProducerRef', etc. doivent être considérées comme des clés d'accès par les utilisateurs, appplications, etc. <strong>sauf en cas de valeurs publiquement diffusées comme pour l'open data</strong> alimentant le Point d'Accès National aux données de transport (PAN, transport.data.gouv). En tant que clés d'accès, elles doivent donc être créées, stockées, diffusées avec les règles de sécurité qui s'imposent pour ce genre d'objets.</p>
+<p>Ces valeurs devraient également contenir des caractères aléatoires et il est conseillé qu'elles soient donc de la forme "fluxprive-Pu9kaosh2thu3pohs4chaeph" plutôt que "fluxprive".</p></span>
+
+<span class="mark"><p>En complément de ces éléments, on retrouve tous les éléments de sécurité classique du monde du Web : firewall, architecture avec DMZ, etc. Cependant ces éléments n'ont pas d’impact sur les échanges SIRI eux-mêmes et sont du ressort de chaque intervenant (points sur lesquels ils auront une parfaite autonomie).</p><p>Si certains souhaitent privilégier des mécanismes de sécurité plus robustes pour leurs flux privés, ils pourraient s'inspirer des recommandations faites par le profil [suisse](https://www.oev-info.ch/sites/default/files/2023-04/siri_realisation-guide_pt_ch_v0.9.0.pdf).</p></span>
 
 <div class="no_h">
 
@@ -2731,10 +2744,13 @@ course.</span>
 
 ## Service SIRI Discovery
 
-SIRI propose des services qui permettent d’effectuer l’échange de
-données référentielles (Discovery Services). Le tableau ci-dessous
-présente les services disponibles et ceux qui sont retenus pour le
-profil SIRI France :
+SIRI propose des services qui permettent d’effectuer l’échange de données référentielles (Discovery Services). Dans le cadre du profil France de SIRI, il est tout à fait possible de les utiliser pour : 
+- La conduite de tests sur les flux SIRI en open data,
+- La maintien de la capacité de SIRI d'être auto-porteur dans les échanges de données pour l'information voyageur, sans avoir recours à d'autres interfaces d'échange.
+
+Note : Que ce soit dans les échanges pour l'open data ou entre systèmes, ces services n'ont pas pour vocation de remplacer l'utilisation des flux NeTEx qui sont beaucoup plus complets pour la description de l'offre planifiée de transport public (topologie du réseau, des arrêts, des lignes, de l'accessibilité, des équipements, etc.). Les 
+
+Le tableau ci-dessous présente les services disponibles et ceux qui sont retenus pour le profil France de SIRI :
 
 <table>
 <colgroup>
@@ -2785,17 +2801,10 @@ Service » proposé par SIRI.</mark></p></td>
 <p><mark>Cette requête permet d'obtenir la liste de tous les équipements
 et services connus du système (voir la structure retournée,
 ci-dessous).</mark></p>
-<p><mark>Note: ce service n'est pas encore disponible dans la version
-actuelle de SIRI, mais fait partie des nouveaux services en cours de
-définition.</mark></p></td>
+</td>
 </tr>
 </tbody>
 </table>
-
-<span class="mark">Ces requêtes ne seront déployées que dans les cas où
-un référentiel théorique n’aura pas pu être identifié : leur
-implémentation est donc facultative et devra, autant que faire se peut,
-être temporaire.</span>
 
 <span class="mark">Les services retenus sont donc : *StopPointsRequest*,
 *LinesRequest*, *InfoChannelRequest* et *FacilityRequest*. Les
@@ -2809,7 +2818,7 @@ Message »).</span>
 <span class="mark">Les informations qu'ils procurent sont présentées
 ci-dessous :</span>
 
-<span class="mark">Note: les services de découvertes SIRI permettent de
+<span class="mark">Note : les services de découvertes SIRI permettent de
 connaître les noms des arrêts et lignes et l'appartenance des arrêts aux
 lignes mais en aucun cas la structure (itinéraire-Route, mission-Journey
 pattern et à fortiori course-vehicle Journey). Il conviendra donc de se
