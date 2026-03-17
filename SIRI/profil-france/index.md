@@ -2744,10 +2744,13 @@ course.</span>
 
 ## Service SIRI Discovery
 
-SIRI propose des services qui permettent d’effectuer l’échange de
-données référentielles (Discovery Services). Le tableau ci-dessous
-présente les services disponibles et ceux qui sont retenus pour le
-profil SIRI France :
+SIRI propose des services qui permettent d’effectuer l’échange de données référentielles (Discovery Services). Dans le cadre du profil France de SIRI, il est tout à fait possible de les utiliser pour : 
+- La conduite de tests sur les flux SIRI en open data,
+- La maintien de la capacité de SIRI d'être auto-porteur dans les échanges de données pour l'information voyageur, sans avoir recours à d'autres interfaces d'échange.
+
+Note : Que ce soit dans les échanges pour l'open data ou entre systèmes, ces services n'ont pas pour vocation de remplacer l'utilisation des flux NeTEx qui sont beaucoup plus complets pour la description de l'offre planifiée de transport public (topologie du réseau, des arrêts, des lignes, de l'accessibilité, des équipements, etc.). Les 
+
+Le tableau ci-dessous présente les services disponibles et ceux qui sont retenus pour le profil France de SIRI :
 
 <table>
 <colgroup>
@@ -2798,17 +2801,10 @@ Service » proposé par SIRI.</mark></p></td>
 <p><mark>Cette requête permet d'obtenir la liste de tous les équipements
 et services connus du système (voir la structure retournée,
 ci-dessous).</mark></p>
-<p><mark>Note: ce service n'est pas encore disponible dans la version
-actuelle de SIRI, mais fait partie des nouveaux services en cours de
-définition.</mark></p></td>
+</td>
 </tr>
 </tbody>
 </table>
-
-<span class="mark">Ces requêtes ne seront déployées que dans les cas où
-un référentiel théorique n’aura pas pu être identifié : leur
-implémentation est donc facultative et devra, autant que faire se peut,
-être temporaire.</span>
 
 <span class="mark">Les services retenus sont donc : *StopPointsRequest*,
 *LinesRequest*, *InfoChannelRequest* et *FacilityRequest*. Les
@@ -2822,7 +2818,7 @@ Message »).</span>
 <span class="mark">Les informations qu'ils procurent sont présentées
 ci-dessous :</span>
 
-<span class="mark">Note: les services de découvertes SIRI permettent de
+<span class="mark">Note : les services de découvertes SIRI permettent de
 connaître les noms des arrêts et lignes et l'appartenance des arrêts aux
 lignes mais en aucun cas la structure (itinéraire-Route, mission-Journey
 pattern et à fortiori course-vehicle Journey). Il conviendra donc de se
