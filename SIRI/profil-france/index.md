@@ -9597,7 +9597,7 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 
 </div>
 
-##### Description de l’enum ‘Reason’
+##### Description de l’enum ‘AlertCause’
  
  Les valeurs retenues par le profil SIRI France au sein de l'élément ‘AlertCause’ sont les suivantes :
 
