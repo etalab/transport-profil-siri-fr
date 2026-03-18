@@ -34,6 +34,7 @@ Cette version a été officiellement validée en session plénière du GT7 (Grou
 
 
 ### Changements détaillés
+
 - Mise à jour des éléments éditoriaux
 - Ajout de la structure RecordedCall au service ET
 - Ajout d'un descriptif de la gestion des passages échus
