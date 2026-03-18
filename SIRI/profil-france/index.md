@@ -9324,7 +9324,7 @@ durée inconnue.</mark></p>
 <td><em><strong>ReasonGroup</strong></em></td>
 <td><strong>1:1</strong></td>
 <td><em>enum</em></td>
-<td></td>
+<td><mark>Dans le profil France, nous retenons uniquement l'énumération portée par AlertCause au sein du TpegReasonGroup, les autres énumérations étant marquées comme dépréciées depuis SIRI v2.1</mark></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -9606,160 +9606,150 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 
 </div>
 
-##### Description de l’enum ‘Reason’
+##### Description de l’enum ‘AlertCause’
+ 
+ Les valeurs retenues par le profil SIRI France au sein de l'élément ‘AlertCause’ sont les suivantes :
 
-###### Miscellaneous reasons
-
-Les valeurs retenues par le profil SIRI France sont les suivantes :
-
-| ***Group***   | ***SIRI-SX***        |                       |
-|---------------|------------------|-------------------------------|
-| Miscellaneous | *unknown*            | *inconnu*                 |
-|               | *incident*           | *incident*                |
-|               | *bombExplosion*      | *explosion d’une bombe*   |
-|               | *securityAlert*      | *alerte sécurité*         |
-|               | *fire*               | *feu*                     |
-|               | *vandalism*          | *vandalisme*              |
-|               | *accident*           | *accident*                |
-|               | *overcrowded*        | *surchargé*               |
-|               | *insufficientDemand* | *Demande insiffisante*    |
-|               | *lightingFailure*    | *Panne d’éclairage*       |
-|               | *serviceFailure*     | *Défaut de service*       |
-|               | *congestion*         | *congestion*              |
-|               | *routeBlockage*      | *Blocage de l’itinéraire* |
-|               | *personOnTheLine*    | *Personne sur la ligne*   |
-|               | *vehicleOnTheLine*   | *Véhicule sur la ligne*   |
-|               | *objectOnTheLine*    | *Objet sur la ligne*      |
-|               | *animalOnTheLine*    | *Animal sur la ligne*     |
-|               | *routeDiversion*     | *Déviation*               |
-|               | *roadClosed*         | *Route fermée*            |
-|               | *roadworks*          | *Travaux*                 |
-|               | *specialEvent*       | *Evénement spécial*       |
-|               | *bridgeStrike*       | *Grève de pont*           |
-|               | *undefinedProblem*   | *Problème non défini*     |
-
-###### Personnel reasons
-
-Les valeurs retenues par le profil SIRI France sont les suivantes :
-
-| ***Group***            | ***SIRI-SX***                                         |                                                              |
-|------------------------|-------------------------------------------------------|--------------------------------------------------------------|
-| ***Personnel Reason*** | *unknown*                   | *Inconnu*                          |
-|                        | *staffSickness*             | *Personnel Malade*                 |
-|                        | *staffAbsence*              | *Personnel absent*                 |
-|                        | *staffInWrongPlace*         | *Personne mal positionné*          |
-|                        | *staffShortage*             | *Manque de personnel*              |
-|                        | *industrialAction*                                    | *Grève.*                                                     |
-|                        | *undefinedPersonnelProblem* | *Problème de personnel non défini* |
-
-|                            | ***SIRI-SX***                                          |                                |
-|----------------------------|--------------------------------------------------------|--------------------------------|
-| ***Personne sub lReason*** | *staffInjury*                | Blessure du personnel          |
-|                            | *contractorStaffInjury*      | Personnel sous-traitant malade |
-|                            | *unofficialIndustrialAction* | Grève officieuse               |
-|                            | staff sickness                                         | Personnel malade               |
-|                            | industrial action                                      | Grève                          |
-
-###### Equipment reasons
-
-Les valeurs retenues par le profil SIRI France sont les suivantes :
-
-|                        | ***SIRI-SX***                                         |                                                              |
-|------------------------|-------------------------------------------------------|--------------------------------------------------------------|
-| ***Equipment Reason*** | *unknown*                   | *inconnu*                          |
-|                        | *signalProblem*             | *Problème de signalisation*        |
-|                        | *signalFailure*             | *Panne de signalisation*           |
-|                        | *derailment*                | *déraillement*                     |
-|                        | *engineFailure*             | *Panne moteur*                     |
-|                        | *breakDown*                 | *Panne*                            |
-|                        | *technicalProblem*          | *Problème technique*               |
-|                        | *repairWork*                | *En réparation*                    |
-|                        | *constructionWork*          | *Travaux de construction*          |
-|                        | *maintenanceWork*           | *En maintenance*                   |
-|                        | *powerProblem*              | *Problème d’alimentation*          |
-|                        | *fuelProblem*               | *Problème de carburant*            |
-|                        | *swingBridgeFailure*        | *Échec du pont tournant*                                     |
-|                        | *escalatorFailure*          | *Panne d’escalator*                |
-|                        | *liftFailure*               | *Panne d’ascenseur*                |
-|                        | *gangwayProblem*            | *Problème de passerelle*                                     |
-|                        | *closedForMaintenance*      | *Fermeture pour maintenance*       |
-|                        | *fuelShortage*              | *Pénurie de carburant*                                       |
-|                        | *deicingWork*               | *Travaux de dégivrage*                                       |
-|                        | *wheelProblem*              | *Problème de roue*                                           |
-|                        | *luggageCarouselProblem*    | *Problème carrousel à bagages*     |
-|                        | *undefinedEquipmentProblem* | *Problème d’équipement non défini* |
-
-|                           | ***SIRI-SX***                                                 |                                                               |
-|---------------------------|---------------------------------------------------------------|---------------------------------------------------------------|
-| ***Equipment Subreason*** | *tractionFailure*                   | *Défaut de la traction*                                       |
-|                           | *defectiveTrain*                    | *Train défectueux*                                            |
-|                           | *slipperyTrack*                     | *Voie glissante*                                              |
-|                           | *trackCircuitProblem*               | *problème de circuit de voie*                                 |
-|                           | *Signal and Switch Failure*         | *Échec du signal et de switch*                                |
-|                           | *brokenRail*                        | *rail cassé*                                                  |
-|                           | *poorRailConditions*                | *mauvaises conditions ferroviaires*                           |
-|                           | *lackOfOperationalStock*            | *manque de stock opérationnel*                                |
-|                           | *defectiveFireAlarmEquipment*       | *Équipement d'alarme incendie défectueux*                     |
-|                           | *defectivePlatformEdgeDoors*        | *portes palières défectueuses*                                |
-|                           | *defectiveCctv*                     | *CCTV défectueux*                                             |
-|                           | *defectivePublicAnnouncementSystem* | *Système d'annonce publique défectueux*                       |
-|                           | *ticketingSystemNotAvailable*       | *Système billetique non disponible* |
-|                           | *levelCrossingFailure*              | *Défaut deu passage à niveau*                                 |
-|                           | *trafficManagementSystemFailure*    | *Défaillance du système de gestion du trafic*                 |
-|                           | *emergencyEngineeringWork*          | *Travaux d'ingénierie d'urgence*                              |
-|                           | *lateFinishToEngineeringWork*       | *finition tardive de travaux d'ingénierie*                    |
-|                           | *overheadWireFailure*               | *Panne de cables aérien*                                      |
-
-###### Environment reason
-
-Les valeurs retenues par le profil SIRI France sont les suivantes :
-
-| ***Group***              | ***SIRI-SX***                                             |                                                               |
-|--------------------------|-----------------------------------------------------------|---------------------------------------------------------------|
-| ***Environment Reason*** | *unknown*                       | *Inconnu*                           |
-|                          | *fog*                           | *broullard*                         |
-|                          | *roughSea*                      | *Mer agitée*                        |
-|                          | *heavySnowFall*                 | *fortes chutes de neige*                                      |
-|                          | *heavyRain*                     | *Fortes pluies*                     |
-|                          | *strongWinds*                   | *Vents forts*                       |
-|                          | *tidalRestrictions*             | *Restriction liée aux marées*       |
-|                          | *highTide*                      | *Marée Haute*                       |
-|                          | *lowTide*                       | *Marée basse*                       |
-|                          | *ice*                           | *Glace*                             |
-|                          | *frozen*                        | *Gel*                               |
-|                          | *hail*                          | *Grêle*                             |
-|                          | *highTemperatures*              | *Température élevée*                |
-|                          | *flooding*                      | *Innondation*                       |
-|                          | *waterlogged*                   | *Sol détrempé*                      |
-|                          | *lowWaterLevel*                 | *niveau d'eau faible*                                         |
-|                          | *highWaterLevel*                | *niveau d'eau élevé*                                          |
-|                          | *fallenLeaves*                  | *Feuilles mortes*                   |
-|                          | *fallenTree*                    | *Chute d’arbres*                    |
-|                          | *landslide*                     | *glissement de terrain*                                       |
-|                          | *undefinedEnvironmentalProblem* | *Problème environmental non défini* |
-
-| ***Group***                         | ***SIRI-SX***                                  |                                                         |
-|-------------------------------------|------------------------------------------------|---------------------------------------------------------|
-| ***Environment Weather Subreason*** | *driftingSnow*       | *Neige à la dérive*                                     |
-|                                     | *blizzardConditions* | *Conditions de blizzard*                                |
-|                                     | *stormDamage*        | *dégâts de tempête*                                     |
-|                                     | *stormConditions*    | *Conditions de tempête*                                 |
-|                                     | *slipperiness*       | *glissance*                                             |
-|                                     | *iceDrift*           | *Dérive de glace*                                       |
-|                                     | *glazedFrost*        | *glacé*                                                 |
-|                                     | *lightningStrike*    | *coup de foudre*                                        |
-|                                     | *avalanches*         | *avalanches*                  |
-|                                     | *flashFloods*        | *crues éclair*                                          |
-| ***Environment ground Subreason***  | *mudslide*           | *glissement de terrain*                                 |
-|                                     | *rockfalls*          | *chutes de pierres*                                     |
-|                                     | *subsidence*         | *affaissement*                                          |
-|                                     | *earthquake­Damage*   | *Dégats Tremblement de terre* |
-|                                     | *sewerOverflow*      | *Débordement d’égout*         |
-|                                     | *grassFire*          | *Feu d’herbe*                 |
-
-###### Autres raisons
-
-*Unknown / UndefinedReasons*
+| **Groupe**                  | ***SIRI-SX***            | **Description** |
+|-----------------------------|--------------------------|-----------------|
+| | *unknown* | Inconnu |
+|sécurité (*safety relevant*) | *securityAlert* | Alerte sécurité |
+|sécurité (*safety relevant*) | *emergencyServicesCall* | Appel des services d'urgence |
+|sécurité (*safety relevant*) | *policeActivity* | Activité policière |
+|sécurité (*safety relevant*) | *policeOrder* | Ordre de la police |
+|sécurité (*safety relevant*) | *fire* | Incendie |
+|sécurité (*safety relevant*) | *cableFire* | Incendie sur un câble |
+|sécurité (*safety relevant*) | *smokeDetectedOnVehicle* | Fumée détectée dans un véhicule |
+|sécurité (*safety relevant*) | *fireAtStation* | Incendie en station          |
+|sécurité (*safety relevant*) | *fireRun* | Appel incendie |
+|sécurité (*safety relevant*) | *fireBrigadeOrder* | Ordre des pompiers |
+|sécurité (*safety relevant*) | *explosion* | Explosion |
+|sécurité (*safety relevant*) | *explosionHazard* | Risque d'explosion |
+|sécurité (*safety relevant*) | *bombDisposal* | Déminage |
+|sécurité (*safety relevant*) | *emergencyMedicalServices* | Urgence médicale |
+|sécurité (*safety relevant*) | *emergencyBrake* | Freinage d'urgence |
+|sécurité (*safety relevant*) | *vandalism* | Vandalisme |
+|sécurité (*safety relevant*) | *cableTheft* | Vol de câble |
+|sécurité (*safety relevant*) | *signalPassedAtDanger* | Signal d'avertissement |
+|sécurité (*safety relevant*) | *stationOverrun* | Dépassement de station |
+|sécurité (*safety relevant*) | *passengersBlockingDoors* | Passager bloquant les portes |
+|sécurité (*safety relevant*) | *defectiveSecuritySystem* | Système de sécurité défectueux |
+|sécurité (*safety relevant*) | *overcrowded* | Surcharge passagère |
+|sécurité (*safety relevant*) | *borderControl* | Police aux frontières |
+|sécurité (*safety relevant*) | *unattendedBag* | Bagage oublié |
+|sécurité (*safety relevant*) | *telephonedThreat* | Menace téléphonique |
+|sécurité (*safety relevant*) | *suspectVehicle* | Véhicule suspect |
+|sécurité (*safety relevant*) | *evacuation* | Évacuation |
+|sécurité (*safety relevant*) | *terroristIncident* | Incident terroriste |
+|sécurité (*safety relevant*) | *publicDisturbance* | Trouble de l'ordre public |
+|problèmes techniques (*technical problem*) | *technicalProblem* | Problème technique |
+|problèmes techniques (*technical problem*) | *vehicleFailure* | Panne du véhicule |
+|problèmes techniques (*technical problem*) | *serviceDisruption* | Interruption de service |
+|problèmes techniques (*technical problem*) | *doorFailure* | Panne d'une porte |
+|problèmes techniques (*technical problem*) | *lightingFailure* | Panne d'éclairage  |
+|problèmes techniques (*technical problem*) | *pointsProblem* | Problème mécanique  |
+|problèmes techniques (*technical problem*) | *pointsFailure* | Panne mécanique |
+|problèmes techniques (*technical problem*) | *signalProblem* | Problème de signalisation |
+|problèmes techniques (*technical problem*) | *signalFailure* | Panne de signalisation |
+|problèmes techniques (*technical problem*) | *overheadWireFailure* | Panne de câble aérien |
+|problèmes techniques (*technical problem*) | *levelCrossingFailure* | Panne d'un passage à niveau |
+|problèmes techniques (*technical problem*) | *trafficManagementSystemFailure* | Panne du système de gestion du trafic |
+|problèmes techniques (*technical problem*) | *engineFailure* | Panne moteur |
+|problèmes techniques (*technical problem*) | *breakdown* | Incident |
+|problèmes techniques (*technical problem*) | *repairWork* | Travaux de réparation |
+|problèmes techniques (*technical problem*) | *constructionWork* | Travaux de construction |
+|problèmes techniques (*technical problem*) | *maintenanceWork* | Travaux de maintenance |
+|problèmes techniques (*technical problem*) | *powerProblem* | Problème d'alimentation |
+|problèmes techniques (*technical problem*) | *trackCircuitProblem* | Problème de circuit |
+|problèmes techniques (*technical problem*) | *swingBridgeFailure* | Panne d'un pont tournant  |
+|problèmes techniques (*technical problem*) | *escalatorFailure* | Panne d'escalator |
+|problèmes techniques (*technical problem*) | *liftFailure* | Panne d'ascenseur |
+|problèmes techniques (*technical problem*) | *gangwayProblem* | Problème de passerelle |
+|problèmes techniques (*technical problem*) | *defectiveVehicle* | Véhicule défectueux |
+|problèmes techniques (*technical problem*) | *brokenRail* | Rail défectueux |
+|problèmes techniques (*technical problem*) | *poorRailConditions* | Rail en mauvaise condition |
+|problèmes techniques (*technical problem*) | *deicingWork* | Travaux de dégivrage |
+|problèmes techniques (*technical problem*) | *wheelProblem* | Problème de roue |
+|trafic (*traffic*) | *routeBlockage* | Route bloquée |
+|trafic (*traffic*) | *congestion* | Embouteillage |
+|trafic (*traffic*) | *heavyTraffic* | Trafic dense |
+|trafic (*traffic*) | *routeDiversion* | Route détournée |
+|trafic (*traffic*) | *roadworks* | Travaux |
+|trafic (*traffic*) | *unscheduledConstructionWork* | Travaux non planifiés |
+|trafic (*traffic*) | *levelCrossingBlocked* | Passage à niveau bloqué |
+|trafic (*traffic*) | *sewerageMaintenance* | Maintenance des canalisations |
+|trafic (*traffic*) | *roadClosed* | Route fermée |
+|trafic (*traffic*) | *roadwayDamage* | Route endommagée |
+|trafic (*traffic*) | *bridgeDamage* | Pont endommagé |
+|trafic (*traffic*) | *personOnTheLine* | Personne sur la voie |
+|trafic (*traffic*) | *objectOnTheLine* | Objet sur la voie |
+|trafic (*traffic*) | *vehicleOnTheLine* | Véhicule sur la voie |
+|trafic (*traffic*) | *animalOnTheLine* | Animal sur la voie |
+|trafic (*traffic*) | *fallenTreeOnTheLine* | Arbre tombé sur la voie |
+|trafic (*traffic*) | *speedRestrictions* | Limitation de vitesse |
+|trafic (*traffic*) | *precedingVehicle* | Véhicule précédent |
+|accident (*accident*) | *accident* | Accidents |
+|accident (*accident*) | *nearMiss* | Quasi-collision |
+|accident (*accident*) | *personHitByVehicle* | Collision avec une personne |
+|accident (*accident*) | *vehicleStruckObject* | Collision avec un objet |
+|accident (*accident*) | *vehicleStruckAnimal* | Collision avec un animal |
+|accident (*accident*) | *derailment* | Déraillement |
+|accident (*accident*) | *collision* | Collision |
+|accident (*accident*) | *levelCrossingAccident* | Incident à un passage à niveau |
+|environnement (*environmental*) | *poorWeather* | Mauvais temps  |
+|environnement (*environmental*) | *fog* | Brouillard |
+|environnement (*environmental*) | *heavySnowfall* | Fortes chutes de neige |
+|environnement (*environmental*) | *heavyRain* | Fortes pluies |
+|environnement (*environmental*) | *strongWinds* | Vents violents |
+|environnement (*environmental*) | *ice* | Glace |
+|environnement (*environmental*) | *hail* | Grêle |
+|environnement (*environmental*) | *highTemperatures* | Températures élevées |
+|environnement (*environmental*) | *flooding* | Inondation |
+|environnement (*environmental*) | *lowWaterLevel* | Niveau d'eau bas |
+|environnement (*environmental*) | *riskOfFlooding* | Risque d'inondation |
+|environnement (*environmental*) | *highWaterLevel* | Niveau d'eau élevé |
+|environnement (*environmental*) | *fallenLeaves* | Chute de feuilles |
+|environnement (*environmental*) | *fallenTree* | Chute d'arbre |
+|environnement (*environmental*) | *landslide* | Glissement de terrain |
+|environnement (*environmental*) | *riskOfLandslide* | Risque de glissement de terrain |
+|environnement (*environmental*) | *driftingSnow* | Neige & Vents |
+|environnement (*environmental*) | *blizzardConditions* | Blizzard |
+|environnement (*environmental*) | *stormDamage* | Dommages causés par une tempête |
+|environnement (*environmental*) | *lightningStrike* | Éclairs |
+|environnement (*environmental*) | *roughSea* | Mer agitée |
+|environnement (*environmental*) | *highTide* | Marée haute |
+|environnement (*environmental*) | *lowTide* | Marée basse |
+|environnement (*environmental*) | *iceDrift* | Glace & Vents |
+|environnement (*environmental*) | *avalanches* | Avalanches |
+|environnement (*environmental*) | *riskOfAvalanches* | Risque d'avalanche |
+|environnement (*environmental*) | *flashFloods* | Inondation éclair |
+|environnement (*environmental*) | *mudslide* | Glissement de boue |
+|environnement (*environmental*) | *rockfalls* | Chutes de pierres |
+|environnement (*environmental*) | *subsidence* | Affaissement |
+|environnement (*environmental*) | *earthquakeDamage* | Dommages causés par un séisme |
+|environnement (*environmental*) | *grassFire* | Incendie de prairie |
+|environnement (*environmental*) | *wildlandFire* | Incendie de forêt |
+|environnement (*environmental*) | *iceOnRailway* | Glace sur les rails |
+|environnement (*environmental*) | *iceOnCarriages* | Glace sur les voitures |
+|évènements spéciaux (*special events*) | *specialEvent* | Évènements spéciaux |
+|évènements spéciaux (*special events*) | *procession* | Marche |
+|évènements spéciaux (*special events*) | *demonstration* | Manifestation |
+|personnel (*personnel*) | *industrialAction* | Grève industrielle |
+|personnel (*personnel*) | *staffSickness* | Personnel malade |
+|personnel (*personnel*) | *staffAbsence* | Personnel absent |
+|personnel (*personnel*) | *operatorCeasedTrading* | Droit de retrait |
+|divers (*miscellaneous*) | *previousDisturbances* | Perturbations précédentes |
+|divers (*miscellaneous*) | *vehicleBlockingTrack* | Véhicule bloquant les voies |
+|divers (*miscellaneous*) | *foreignDisturbances* | Perturbations étrangères |
+|divers (*miscellaneous*) | *waitingForTransferPassengers* | Attente de passagers en transit |
+|divers (*miscellaneous*) | *changeInCarriages* | Changement de véhicules |
+|divers (*miscellaneous*) | *trainCoupling* | Attelage de trains |
+|divers (*miscellaneous*) | *boardingDelay* | Retard à l'embarquement |
+|divers (*miscellaneous*) | *awaitingOncomingVehicle* | Attente de l'arrivée d'un véhicule |
+|divers (*miscellaneous*) | *overtaking* | Dépassement |
+|divers (*miscellaneous*) | *provisionDelay* | Retard dans la mise à disposition |
+|divers (*miscellaneous*) | *miscellaneous* | Divers |
+| | *undefinedAlertCause* | Cause d'alerte non-définie |
 
 ##### Description de l’enum ‘Severity’
 
