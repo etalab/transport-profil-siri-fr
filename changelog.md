@@ -24,6 +24,7 @@ Les changements détaillés ci-dessous sont présentés selon les sections du pr
 ## v1.7
 
 ### Généralités
+
 La version 1.7 du profil France de SIRI est la **première version du profil ayant bénéficié du changement d'outillage du GT7**. 
 En effet, cette version est la première à avoir été bénéficié :
 - de la migration de documents bureautiques vers des éléments en Markdown,
