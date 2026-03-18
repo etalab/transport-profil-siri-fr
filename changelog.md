@@ -18,6 +18,7 @@ Les changements détaillés ci-dessous sont présentés selon les sections du pr
 |Facility Monitoring (FM) |Correction des éléments pour l'accessibilité |[#37](https://github.com/etalab/transport-profil-siri-fr/pull/37) |
 |Estimated Timetable (ET) |- Correction de la description de l'attribut DirectionRef <br />- Changement de cardinalité pour l'attribut order dans EstimatedCall |[#44](https://github.com/etalab/transport-profil-siri-fr/pull/44), [#52](https://github.com/etalab/transport-profil-siri-fr/pull/52) |
 |Situation Exchange (SX) |- Correction et clarification de l'ensemble de la structure PtSituationElement et Affects, avec inclusion d'exemple <br />- Changement des éléments de la structure ActionData <br />- Ajout de valeurs pour l'énumération Severity <br />- Mise en conformité de l'énumération Reason avec la XSD de SIRI |[#40](https://github.com/etalab/transport-profil-siri-fr/pull/40), [#41](https://github.com/etalab/transport-profil-siri-fr/pull/41), [#51](https://github.com/etalab/transport-profil-siri-fr/pull/51), [#55](https://github.com/etalab/transport-profil-siri-fr/pull/55), [#57](https://github.com/etalab/transport-profil-siri-fr/pull/57) |
+|Discovery|Clarification de l'introduction de la section|[#53](https://github.com/etalab/transport-profil-siri-fr/pull/53)|
 
 ---
 
