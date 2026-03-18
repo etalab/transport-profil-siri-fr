@@ -27,6 +27,7 @@ L'équipe du Point d'Accès National aux données de transport (PAN, transport.d
 # Contributions
 
 ## Généralités
+
 Cet espace de travail est ouvert à tout contributeur sans besoin d'inscription au GT7. Cependant, si vous souhaitez participer aux débats sur les demandes de changement, merci de vous rapprocher de l'animatrice du GT7, [@TuThoThai](https://github.com/TuThoThai).
 
 ## Comment contribuer
