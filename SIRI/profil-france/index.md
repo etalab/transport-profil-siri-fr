@@ -1,6 +1,6 @@
 ---
 title: "SIRI - Profil France v1.8"
-date: 2026-03-14T00:00:00+00:00
+date: 2026-03-16T00:00:00+00:00
 draft: false
 tags: ["SIRI"]
 autonumbering: true
@@ -9,9 +9,7 @@ autonumbering: true
 Profil d'échange pour la description des informations temps-réel des
 réseaux de transport en commun
 
-**SIRI - Profil Français v1.8**
-
-**BNTRA-CN03-GT7_NF Profil SIRI FR_v1.8 2025MMDD**
+**SIRI - Profil France v1.8**
 
 **Avant-propos**
 
@@ -104,6 +102,11 @@ des définitions et autres acronymes.
 reproduits avec l’accord de l’AFNOR. Seul le texte original et complet
 de la norme telle que diffusée par l'AFNOR – accessible via le site
 Internet www.afnor. org – possède une valeur normative.
+
+Ce document a été validé et publié comme suit :
+- travaux de révision : 2024-2025
+- date de validation en CN03 : 19 décembre 2025
+- date de publication : 16 mars 2026
 
 **Introduction**
 
