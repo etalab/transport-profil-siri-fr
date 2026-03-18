@@ -1,5 +1,5 @@
 ---
 title: SIRI
-summary: Liste des normes SIRI profil France
-description: Cette page regroupe les documentations des normes SIRI pour le profil France.
+summary: Profil France de le norme SIRI
+description: Cette page donne accès au profil France de SIRI (NF EN 15531-1 à 3 et CEN/TS 15531-4 à 7).
 ---
