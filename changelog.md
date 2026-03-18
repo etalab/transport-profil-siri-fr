@@ -20,6 +20,7 @@ Les changements détaillés ci-dessous sont présentés selon les sections du pr
 |Situation Exchange (SX) |- Correction et clarification de l'ensemble de la structure PtSituationElement et Affects, avec inclusion d'exemple <br />- Changement des éléments de la structure ActionData <br />- Ajout de valeurs pour l'énumération Severity <br />- Mise en conformité de l'énumération Reason avec la XSD de SIRI |[#40](https://github.com/etalab/transport-profil-siri-fr/pull/40), [#41](https://github.com/etalab/transport-profil-siri-fr/pull/41), [#51](https://github.com/etalab/transport-profil-siri-fr/pull/51), [#55](https://github.com/etalab/transport-profil-siri-fr/pull/55), [#57](https://github.com/etalab/transport-profil-siri-fr/pull/57) |
 
 ---
+
 ## v1.7
 
 ### Généralités
