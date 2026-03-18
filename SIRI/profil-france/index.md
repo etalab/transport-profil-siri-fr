@@ -1,6 +1,6 @@
 ---
-title: "SIRI - Profil France v1.7"
-date: 2023-07-27T00:00:00+00:00
+title: "SIRI - Profil France v1.8"
+date: 2026-03-16T00:00:00+00:00
 draft: false
 tags: ["SIRI"]
 autonumbering: true
@@ -9,13 +9,11 @@ autonumbering: true
 Profil d'échange pour la description des informations temps-réel des
 réseaux de transport en commun
 
-**SIRI - Profil Français v1.7**
-
-**BNTRA-CN03-GT7_NF Profil SIRI FR_v1.7 20230727**
+**SIRI - Profil France v1.8**
 
 **Avant-propos**
 
-Ce document présente de façon détaillée le profil SIRI National France
+Ce document présente de façon détaillée le profil France de SIRI
 (également appelé « local agreement SIRI France »), soit la déclinaison
 de la norme SIRI aux besoins métiers français. Il contient tous les
 éléments nécessaires à sa compréhension, mais ne propose ni une
@@ -63,7 +61,7 @@ par l’ensemble de documents normatifs suivants :
   Model for Public Transport et Transmodel in UML (projet SITP 2,version
   0.1 04/09/2003)
 
-- NEPTUNE : Projet de norme AFNOR - PR NF P99-506 Décembre 2009
+- NeTEx : Network Timetable EXchange (CEN/TS 16614-1 à 6)
 
 Dans le document, les règles propres au profil sont présentées sur
 <span class="mark">fond gris</span>. Les autres règles ont plus un rôle
@@ -100,10 +98,15 @@ intégrateurs.
 Le lecteur dispose en annexe au présent document d’un glossaire composé
 des définitions et autres acronymes.
 
-*<u>A noter</u>* : les extraits de normes figurant dans cet ouvrage sont
+*<u>À noter</u>* : les extraits de normes figurant dans cet ouvrage sont
 reproduits avec l’accord de l’AFNOR. Seul le texte original et complet
 de la norme telle que diffusée par l'AFNOR – accessible via le site
 Internet www.afnor. org – possède une valeur normative.
+
+Ce document a été validé et publié comme suit :
+- travaux de révision : 2024-2025
+- date de validation en CN03 : 19 décembre 2025
+- date de publication : 16 mars 2026
 
 **Introduction**
 
@@ -115,11 +118,9 @@ participation initiale de la France, l’Allemagne, la Norvège et le
 Royaume-Uni.
 
 Le groupe de travail français, CN03/GT7 (miroir du groupe européen CEN
-TC278 / WG3 / SG7) a adopté le format d’échanges NEPTUNE (sous-ensemble,
-ou profil, du format TRIDENT issu d'un projet Européen) comme base pour
-les échanges de données de transport en commun. Le standard NEPTUNE,
+TC278 / WG3 / SG7) a adopté le format d’échanges NeTEX (CEN/TS 16614-1 à 6) comme base pour
+les échanges de données de transport en commun. Le standard NeTEx,
 aborde essentiellement les aspects référentiels des données échangées.
-Il est normalisé à l’AFNOR sous la référence PR NF P99-506.
 
 Afin de fournir aux transporteurs et aux industriels un cadre normalisé
 pour l’échange de données concernant l’information temps réel, le CEN
@@ -136,7 +137,7 @@ Le présent document contient le profil d’utilisation de cette
 spécification technique dans un contexte national français.
 
 Il est complété par un ensemble de documents d’accompagnement : se
-reporter au paragraphe Documents d’accompagnement du présent document.
+reporter aux annexes en fin de profil.
 
 #  Domaine d’application
 
@@ -2275,12 +2276,9 @@ de simplifier la compatibilité avec certains systèmes existants.
 
 ### Réseau et sécurité
 
-<span class="mark">La gestion de la sécurité et du contrôle d'accès
-n'est pas à proprement parler du ressort de SIRI, mais repose sur la
-couche de transport réseau retenue.</span>
+<span class="mark">Cette section du profil France est principalement dédiée à la sécurisation des échanges SIRI entre systèmes, soit les cas d'usage identifiés suivants : Diffusion inter Systèmes, Diffusion Terminaux légers, Centrale de mobilité, Gestion des perturbations, Information PMR et Alimentation d'un concentrateur.</span>
 
-<span class="mark">SIRI étant un protocole inter-systèmes, la sécurité
-est plus facile à maîtriser.</span>
+<span class="mark"><p>La gestion de la sécurité et du contrôle d'accès n'est pas à proprement parler du ressort de SIRI, mais repose sur la couche de transport réseau retenue. Elle doit faire l'objet d'une étude par les reponsables de sécurité du réseau des systèmes échangeant des flux SIRI.</p><p>SIRI étant un protocole inter-systèmes, la sécurité des échanges sont souvent le fruit d'un accord entre les deux parties prenantes des échanges.</p></span>
 
 <div class="no_h">
 
@@ -2289,15 +2287,31 @@ est plus facile à maîtriser.</span>
 
 </div>
 
-<span class="mark">Cette solution est peu coûteuse et simple à mettre en
-oeuvre, car elle ne repose que sur une configuration du serveur
-HTTP.</span>
+<span class="mark">Cette solution est peu coûteuse et simple à mettre en oeuvre, car elle ne repose que sur une configuration du serveur HTTP. À noter qu'elle n'est pas suffisante seule, elle doit s'accompagner de la mise en place des autres règles de sécurité standard.</span>
 
-<span class="mark">En complément de ces éléments, on retrouve tous les
-éléments de sécurité classique du monde du Web : firewall, architecture
-avec DMZ, etc. Cependant ces éléments n'ont pas d’impact sur les
-échanges SIRI eux-mêmes et sont du ressort de chaque intervenant (points
-sur lesquels ils auront une parfaite autonomie).</span>
+<span class="mark"><p>Pour les entêtes HTTP, il est fortement conseillé d'utiliser la même structure standard pour tout échange au profil France de type 'X-Siri-Requestor' qui reprend la valeur du 'RequestorRef' (ou celle du 'ProducerRef' dans les notifications), se trouvant dans le contenu XML.</p><p>Une telle identification, avant la lecture du XML, permet de mettre en place toutes les mesures de sécurité nécessaires en amont du serveur SIRI et la lecture des échanges.</p><p>Le profil France recommande un paramétrage comme ci-dessous :</p></span>
+
+```xml
+curl --header 'X-Siri-RequestorRef: diffusion-ecran' --header 'Content-Type: application/xml' -d@- https://serveur.link/exchange.point/siri <<XML
+<?xml version='1.0' encoding='utf-8'?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+  <S:Body>
+    <sw:CheckStatus xmlns:siri="http://www.siri.org.uk/siri" xmlns:sw="http://wsdl.siri.org.uk">
+      <Request>
+        <siri:RequestTimestamp>2025-01-27T16:32:13.860+01:00</siri:RequestTimestamp>
+        <siri:RequestorRef>diffusion-ecran</siri:RequestorRef>
+        <siri:MessageIdentifier>Test</siri:MessageIdentifier>
+      </Request>
+      <RequestExtension/>
+    </sw:CheckStatus>
+  </S:Body>
+</S:Envelope>
+XML
+```
+<span class="mark"><p>En outre, il est important de rappeler que les valeurs utilisées pour les éléments tels que 'RequestorRef' ou 'ProducerRef', etc. doivent être considérées comme des clés d'accès par les utilisateurs, appplications, etc. <strong>sauf en cas de valeurs publiquement diffusées comme pour l'open data</strong> alimentant le Point d'Accès National aux données de transport (PAN, transport.data.gouv). En tant que clés d'accès, elles doivent donc être créées, stockées, diffusées avec les règles de sécurité qui s'imposent pour ce genre d'objets.</p>
+<p>Ces valeurs devraient également contenir des caractères aléatoires et il est conseillé qu'elles soient donc de la forme "fluxprive-Pu9kaosh2thu3pohs4chaeph" plutôt que "fluxprive".</p></span>
+
+<span class="mark"><p>En complément de ces éléments, on retrouve tous les éléments de sécurité classique du monde du Web : firewall, architecture avec DMZ, etc. Cependant ces éléments n'ont pas d’impact sur les échanges SIRI eux-mêmes et sont du ressort de chaque intervenant (points sur lesquels ils auront une parfaite autonomie).</p><p>Si certains souhaitent privilégier des mécanismes de sécurité plus robustes pour leurs flux privés, ils pourraient s'inspirer des recommandations faites par le profil [suisse](https://www.oev-info.ch/sites/default/files/2023-04/siri_realisation-guide_pt_ch_v0.9.0.pdf).</p></span>
 
 <div class="no_h">
 
@@ -2733,10 +2747,13 @@ course.</span>
 
 ## Service SIRI Discovery
 
-SIRI propose des services qui permettent d’effectuer l’échange de
-données référentielles (Discovery Services). Le tableau ci-dessous
-présente les services disponibles et ceux qui sont retenus pour le
-profil SIRI France :
+SIRI propose des services qui permettent d’effectuer l’échange de données référentielles (Discovery Services). Dans le cadre du profil France de SIRI, il est tout à fait possible de les utiliser pour : 
+- La conduite de tests sur les flux SIRI en open data,
+- La maintien de la capacité de SIRI d'être auto-porteur dans les échanges de données pour l'information voyageur, sans avoir recours à d'autres interfaces d'échange.
+
+Note : Que ce soit dans les échanges pour l'open data ou entre systèmes, ces services n'ont pas pour vocation de remplacer l'utilisation des flux NeTEx qui sont beaucoup plus complets pour la description de l'offre planifiée de transport public (topologie du réseau, des arrêts, des lignes, de l'accessibilité, des équipements, etc.). Les 
+
+Le tableau ci-dessous présente les services disponibles et ceux qui sont retenus pour le profil France de SIRI :
 
 <table>
 <colgroup>
@@ -2787,17 +2804,10 @@ Service » proposé par SIRI.</mark></p></td>
 <p><mark>Cette requête permet d'obtenir la liste de tous les équipements
 et services connus du système (voir la structure retournée,
 ci-dessous).</mark></p>
-<p><mark>Note: ce service n'est pas encore disponible dans la version
-actuelle de SIRI, mais fait partie des nouveaux services en cours de
-définition.</mark></p></td>
+</td>
 </tr>
 </tbody>
 </table>
-
-<span class="mark">Ces requêtes ne seront déployées que dans les cas où
-un référentiel théorique n’aura pas pu être identifié : leur
-implémentation est donc facultative et devra, autant que faire se peut,
-être temporaire.</span>
 
 <span class="mark">Les services retenus sont donc : *StopPointsRequest*,
 *LinesRequest*, *InfoChannelRequest* et *FacilityRequest*. Les
@@ -2811,7 +2821,7 @@ Message »).</span>
 <span class="mark">Les informations qu'ils procurent sont présentées
 ci-dessous :</span>
 
-<span class="mark">Note: les services de découvertes SIRI permettent de
+<span class="mark">Note : les services de découvertes SIRI permettent de
 connaître les noms des arrêts et lignes et l'appartenance des arrêts aux
 lignes mais en aucun cas la structure (itinéraire-Route, mission-Journey
 pattern et à fortiori course-vehicle Journey). Il conviendra donc de se
@@ -2825,12 +2835,11 @@ d'arrêt pour obtenir une information proprement structurée.</span>
 <u>Note</u>: Voir 3.2 pour les explications détaillées de lecture des
 tableaux qui suivent (codes couleurs, etc.).
 
-|                                                            |              |                                       |
-|------------------------------------------------------------|--------------|---------------------------------------|
 | ***<span class="mark">StopPointsDiscoveryRequest</span>*** | *+Structure* | Requête d'accès à la liste des arrêts |
+|------------------------------------------------------------|--------------|---------------------------------------|
 
-|                       |                                                  |     |                     |                                                                                                       |
-|-----------------------|--------------------------------------------------|-----|---------------------|-------------------------------------------------------------------------------------------------------|
+|                       |                                                  |     |                     |                 |
+|-----------------------|--------------------------------------------------|-----|---------------------|-----------------|
 | *Log*                 | ***<span class="mark">Request­Timestamp</span>*** | 1:1 | *xsd:dateTime*      | Date d’émission de la requête.                                                                        |
 | *Endpoint Properties* | ***<span class="mark">Address</span>***          | 0:1 | *Endpoint­Address*   | Adresse réseau de destination de la réponse (ici une URL étant donné le choix d’implémentation SOAP). |
 |                       | ***<span class="mark">RequestorRef</span>***     | 1:1 | *Participant­Code*   | Identifiant du demandeur (reprendre la structure \[*fournisseur*\] des identifiants).                 |
@@ -2847,9 +2856,8 @@ La structure ci-dessous présente la description d'un arrêt tel que
 retourné par le service (mais sans les entêtes génériques de réponse
 SIRI).
 
-|                                                             |                                        |                                                              |
-|-------------------------------------------------------------|----------------------------------------|--------------------------------------------------------------|
 | ***<span class="mark">AnnotatedStopPointStructure</span>*** | *<span class="mark">+Structure</span>* | <span class="mark">Description simplifiée d'un arrêt</span>. |
+|------------------------------------------------------------|--------------|---------------------------------------|
 
 <table>
 <colgroup>
@@ -2905,9 +2913,8 @@ conformément au paragraphe 5.4.</mark></td>
 
 #### <span class="mark">Requête LinesDiscoveryRequest</span>
 
-|                                                       |              |                                       |
-|-------------------------------------------------------|--------------|---------------------------------------|
 | ***<span class="mark">LinesDiscoveryRequest</span>*** | *+Structure* | Requête d'accès à la liste des lignes |
+|------------------------------------------------------------|--------------|---------------------------------------|
 
 |                       |                                                   |     |                    |                                                                                                                                 |
 |-----------------------|---------------------------------------------------|-----|--------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -2919,9 +2926,8 @@ conformément au paragraphe 5.4.</mark></td>
 
 #### <span class="mark">Réponses aux LinesRequest</span>
 
-|                                                        |              |                                                               |
-|--------------------------------------------------------|--------------|---------------------------------------------------------------|
 | ***<span class="mark">AnnotatedLineStructure</span>*** | *+Structure* | <span class="mark">Description simplifiée d'une ligne.</span> |
+|------------------------------------------------------------|--------------|---------------------------------------|
 
 |                 |                                              |      |                                  |                                                                                                                                                                                                                                                                  |
 |-----------------|----------------------------------------------|------|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -3018,10 +3024,7 @@ messagerie pour plus de précisions.</span>
 
 <span class="mark">Dans le cadre du profil France :</span>
 
-- <span class="mark">le champ facultatif « Monitored » sera toujours
-  présent et égal à « true » (inutile de traiter les équipements pour
-  lesquels on n’a pas d'information temps réel ou au moins mis à jour
-  quotidiennement.</span>
+- <span class="mark">Le champ facultatif « Monitored » sera toujours présent et égal à « true » (inutile de traiter les équipements pour lesquels on n’a pas d'information temps réel ou au moins mis à jour quotidiennement).</span>
 
 - <span class="mark">Le champ facultatif «Facility» sera toujours
   présent :</span>
@@ -3041,43 +3044,14 @@ messagerie pour plus de précisions.</span>
   - <span class="mark">Le champ facultatif «**FacilityLocation**» sera
     toujours présent et instancié,</span>
 
-  - <span class="mark">Les champs facultatifs «**SuitableFor**» et
-    «**NotSuitableFor**» restent facultatifs,</span>
+  - <span class="mark">Le champ «**AccessibilityAssessment**» reste facultatif,</span>
 
 - <span class="mark">Le champ facultatif «**Extension**» ne sera jamais
   présent.</span>
 
 <span class="mark">Les valeurs possibles pour ces différents champs
 seront celles proposées par SIRI, mais pourront être réduites aux
-valeurs jugées pertinentes dans le contexte France lors de
-l’implémentation du service , par exemple pour «**SuitableFor**» et
-«**NotSuitableFor**» on trouvera des possibilités comme :</span>
-
-- <span class="mark">auditory,</span>
-
-- <span class="mark">wheelChair,</span>
-
-- <span class="mark">motorizedWheelChair,</span>
-
-- <span class="mark">mobility,</span>
-
-- <span class="mark">visual,</span>
-
-- <span class="mark">cognitive,</span>
-
-- <span class="mark">psychiatric,</span>
-
-- <span class="mark">incapacitingdisease,</span>
-
-- <span class="mark">youngPassenger,</span>
-
-- <span class="mark">luggageEncumbered,</span>
-
-- <span class="mark">stroller,</span>
-
-- <span class="mark">elderly,</span>
-
-- <span class="mark">otherSpecificNeed.</span>
+valeurs jugées pertinentes dans le contexte France. Se reporter au profil France NeTEx pour l’interprétation des différents champs contenus dans «**AccessibilityAssessment**», notamment dans la partie Accessibilité du profil. </span>
 
 ## Gestion des versions du profil SIRI FR
 
@@ -3462,9 +3436,7 @@ Aller/Retour).</p>
 <p><mark>La sélection de ce champ n’est pas dans la logique du reste du
 profil (plutôt porté sur Destination, voir plus bas) mais est maintenu
 du fait de la cardinalité imposée par SIRI</mark> (le champ est
-obligatoire dans la description XSD de SIRI et doit donc être maintenu,
-il pourra toutefois être laissé vide, sans que cela ne pose
-problème…)</p></td>
+obligatoire dans la description XSD de SIRI et doit donc être maintenu et ne peut être vide.)</p></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -4057,9 +4029,9 @@ SIRI, <del>,</del> référencer un afficheur, par exemple).</mark></th>
 <tr class="odd">
 <td></td>
 <td><em><strong><mark>Order</mark></strong></em></td>
-<td>0:1</td>
+<td>1:1</td>
 <td><em>xsd:positive­Integer</em></td>
-<td>Numéro d'ordre de l'arrêt dans la mission.</td>
+<td>Numéro d'ordre de l'arrêt dans la mission.<mark>Obligatoire dans le profil France pour correspondre au choix fait dans RecordedCall.</mark></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -4296,7 +4268,7 @@ VÉHICULE, par ex. ‘manySeatsAvailable’ ou ‘standingRoomOnly’.</p>
 ou capacités individuelles ci-dessous.<mark>L’énumération ‘occupancy’
 est le suivant :</mark></p>
 <p><em><mark>full | seats­Available | standing­Available | unknown | empty
-| <span class="m_excl">manySeatAvailable | fewSeatAvailable</span> | standingRoomOnly |
+| manySeatAvailable | fewSeatAvailable | standingRoomOnly |
 crushStandingRoomOnly | notAcceptingPassengers</mark></em></p></td>
 </tr>
 <tr class="odd">
@@ -4700,9 +4672,8 @@ course.</p></li>
 </tbody>
 </table>
 
-|                                                       |              |                                                                                                            |
-|-------------------------------------------------------|--------------|------------------------------------------------------------------------------------------------------------|
 | ***<span class="mark">StopMonitoringRequest</span>*** | *+Structure* | Requête pour obtenir des informations temps réel sur les heures d'arrivée et de départ à un point d'arrêt. |
+|------------------------------------------------------------|--------------|---------------------------------------|
 
 <table class="no_h">
 <tbody>
@@ -4971,9 +4942,8 @@ requête illimitée.
 
 ### Abonnement aux informations temps réel au point d'arrêt
 
-|                                  |              |                                                                                                                        |
-|----------------------------------|--------------|------------------------------------------------------------------------------------------------------------------------|
 | ***StopMonitoringSubscription*** | *+Structure* | Requête d'abonnement pour obtenir des informations temps réel sur les heures d'arrivée et de départ à un point d'arrêt |
+|------------------------------------------------------------|--------------|---------------------------------------|
 
 <table class="no_h">
 <tbody>
@@ -5059,9 +5029,8 @@ dès que :
 
 ### Résultat de la requête d'information temps réel au point d'arrêt
 
-|                       |     |              |                                         |
-|-----------------------|-----|--------------|-----------------------------------------|
 | ***ServiceDelivery*** |     | *+Structure* | voir SIRI Part 7.2***ServiceDelivery*** |
+|-----------------------|-----|--------------|-----------------------------------------|
 
 |                                    |                              |      |                        |                                          |
 |------------------------------------|------------------------------|------|------------------------|------------------------------------------|
@@ -5070,9 +5039,8 @@ dès que :
 
 #### Attributs temps réel du point d'arrêt
 
-|                              |              |                                       |
-|------------------------------|--------------|---------------------------------------|
 | ***StopMonitoringDelivery*** | *+Structure* | Delivery for Stop Monitoring Service. |
+|------------------------------|--------------|---------------------------------------|
 
 <table class="no_h">
 <tbody>
@@ -5129,9 +5097,8 @@ l'arrêt).</mark></td>
 
 ##### Description d'un arrêt (ou point d'arrêt indiqué) sur une course
 
-|                                                    |              |                                                                               |
-|----------------------------------------------------|--------------|-------------------------------------------------------------------------------|
 | ***<span class="mark">MonitoredStopVisit</span>*** | *+Structure* | Description du passage d'un véhicule à un arrêt (dans le cadre d'une course). |
+|----------------------------------------------------|--------------|---------------------------------------|
 
 <table class="no_h">
 <tbody>
@@ -5177,11 +5144,10 @@ l'arrêt.</mark></p></td>
 </tbody>
 </table>
 
-###### Attributs temps réel de la course : Monitored Vehicle Journey
+##### Attributs temps réel de la course : Monitored Vehicle Journey
 
-|                                                         |              |                           |
-|---------------------------------------------------------|--------------|---------------------------|
 | ***<span class="mark">MonitoredVehicleJourney</span>*** | *+Structure* | Description de la course. |
+|------------------- -------------------------------------|--------------|---------------------------------------|
 
 <table class="no_h">
 <tbody>
@@ -5313,9 +5279,8 @@ qui devront être fixes en amont de l'échange).</mark></td>
 
 <h7>L'arrêt </h7>
 
-|                                               |              |                                     |
-|-----------------------------------------------|--------------|-------------------------------------|
 | ***<span class="mark">MonitoredCall</span>*** | *+Structure* | Informations horaires pour l'arrêt. |
+|-----------------------------------------------|--------------|---------------------------------------|
 
 <table class="no_h">
 <tbody>
@@ -5563,9 +5528,8 @@ courante du vehicule et l'arrêt considéré.</mark></td>
 
 <h7>Arrêts suivants</h7>
 
-|                                            |              |                                                   |
-|--------------------------------------------|--------------|---------------------------------------------------|
 | ***<span class="mark">OnwardCall</span>*** | *+Structure* | Information sur les arrêts suivants de la course. |
+|----------------- --------------------------|--------------|---------------------------------------|
 
 <table class="no_h">
 <tbody>
@@ -5846,9 +5810,8 @@ n'est pas applicable.</mark></p></td>
 
 #### VehicleJourneyInfoGroup
 
-|                                                         |     |     |                           |
-|---------------------------------------------------------|-----|-----|---------------------------|
-| ***<span class="mark">VehicleJourneyInfo­Group</span>*** |     |     | Description de la course. |
+| ***<span class="mark">VehicleJourneyInfo­Group</span>*** |              |     | Description de la course. |
+|---------------------------------------------------------|--------------|-----|---------------------------|
 
 <table class="no_h">
 <tbody>
@@ -6035,9 +5998,9 @@ est fourni, le nom doit l'être aussi).</mark></td>
 
 #### JourneyPatternInfoGroup
 
-|                                                         |     |     |                                                     |
-|---------------------------------------------------------|-----|-----|-----------------------------------------------------|
+
 | ***<span class="mark">JourneyPatternInfoGroup</span>*** |     |     | Groupe d'attributs pour la description des missions |
+|---------------------------------- ----------------------|-----|-----|---------------------------------------|
 
 <table class="no_h">
 <tbody>
@@ -6107,17 +6070,16 @@ et « *Situation Exchange* ».</span>
 | SM-14 | <span class="mark">Seule la référence à un événement sera retenue, les informations complémentaires pour l'état des équipements et les perturbations seront déterminées dans le cadre du service « *Situation Exchange* ».</span> |
 |-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-|             |                                              |      |                 |                                                                                             |
-|-------------|----------------------------------------------|------|-----------------|---------------------------------------------------------------------------------------------|
+
 | *Situation* | ***<span class="mark">SituationRef</span>*** | 0:\* | *SituationCode* | Identifiant (externe) de l'événement qui est la cause des modifications horaires indiquées. |
+|-------------|----------------------------------------------|------|-----------------|---------------------------------------------------------------------------------------------|
 
 </div>
 
 #### JourneyProgressInfoGroup
 
-|                                                          |                                                           |
-|----------------------------------------------------------|-----------------------------------------------------------|
 | ***<span class="mark">JourneyProgressInfoGroup</span>*** | Groupe d'attributs précisant l’avancement sur la mission. |
+|----------------------------------------------------------|---------------------------------------|
 
 <table class="no_h">
 <tbody>
@@ -6848,7 +6810,7 @@ informations.</mark></p></td>
 
 </div>
 
-###### Structure Location
+##### Structure Location
 
 <div class="no_h">
 
@@ -7423,9 +7385,9 @@ langues sont systèmatiquement diffusées)</p></td>
 
 ### Requête au service « General Message »
 
-|                                                       |              |                               |
-|-------------------------------------------------------|--------------|-------------------------------|
+
 | ***<span class="mark">GeneralMessageRequest</span>*** | *+Structure* | Requête d'accès aux messages. |
+|-------------------------------------------------------|--------------|-------------------------------|
 
 <table class="no_h">
 <tbody>
@@ -7505,9 +7467,8 @@ langues.</mark></p></td>
 
 <div class="no_h">
 
-|                                         |              |                                                        |
-|-----------------------------------------|--------------|--------------------------------------------------------|
 | ***GeneralMessage­SubscriptionRequest*** | *+Structure* | Requête d’abonnement au service SIRI *GeneralMessage*. |
+|-----------------------------------------|--------------|--------------------------------------------------------|
 
 </div>
 
@@ -7520,9 +7481,8 @@ langues.</mark></p></td>
 
 ### Réponse du service « General Message » (structure générale)
 
-|                       |              |                                              |
-|-----------------------|--------------|----------------------------------------------|
 | ***ServiceDelivery*** | *+Structure* | See SIRI Part 2-7.2.1 ***ServiceDelivery.*** |
+|-----------------------|--------------|----------------------------------------------|
 
 |           |                              |      |                       |                                 |
 |-----------|------------------------------|------|-----------------------|---------------------------------|
@@ -7531,9 +7491,8 @@ langues.</mark></p></td>
 
 ### Réponse du service « General Message » (structure détaillée)
 
-|                              |              |                                       |
-|------------------------------|--------------|---------------------------------------|
 | ***GeneralMessageDelivery*** | *+Structure* | Contenu et modification des messages. |
+|------------------------------|--------------|---------------------------------------|
 
 |              |                                         |          |                 |                                                                                                                  |
 |--------------|-----------------------------------------|----------|-----------------|------------------------------------------------------------------------------------------------------------------|
@@ -7548,9 +7507,8 @@ contenir plusieurs de chaque)</span>.
 
 #### Description du « General Message »
 
-|                                             |              |                        |
-|---------------------------------------------|--------------|------------------------|
 | ***<span class="mark">InfoMessage</span>*** | *+Structure* | Message d'information. |
+|---------------------------------------------|--------------|------------------------|
 
 <table class="no_h">
 <tbody>
@@ -7683,9 +7641,8 @@ role="doc-backlink">↩︎</a></p></li>
 
 #### Annulation d'un « General Message »
 
-|                                                       |              |                                            |
-|-------------------------------------------------------|--------------|--------------------------------------------|
 | **<span class="mark">InfoMessageCancellation</span>** | *+Structure* | Annulation d'un message émis précédemment. |
+|-------------------------------------------------------|--------------|---------------------------------------|
 
 <table class="no_h">
 <tbody>
@@ -8042,9 +7999,8 @@ Ce service permet d’échanger :
 
 ### Requête d’information sur l’état des équipements « Facility » pour lequel les informations seront retournées
 
-|                                                           |              |                                                                   |
-|-----------------------------------------------------------|--------------|-------------------------------------------------------------------|
 | ***<span class="mark">FacilityMonitoringRequest</span>*** | *+Structure* | Requête pour obtenir des informations temps reel sur un ‘Service’ |
+|-----------------------------------------------------------|--------------|---------------------------------------|
 
 <span class="mark"></span>
 
@@ -8175,9 +8131,8 @@ et rentrant dans les filtres spécifiés sont retournés.</mark></td>
 
 ### Requête d’abonnement sur l’état des Services
 
-|                                            |              |                                                                                                                   |
-|--------------------------------------------|--------------|-------------------------------------------------------------------------------------------------------------------|
 | ***VehicleMonitoring­SubscriptionRequest*** | *+Structure* | <span class="mark">Requête d’abonnement pour obtenir les informations temps réels sur l’état des services.</span> |
+|--------------------------------------------|--------------|---------------------------------------|
 
 <table>
 <colgroup>
@@ -8239,9 +8194,8 @@ incrémentale)</mark><em>.</em></p></td>
 La réponse à la requête contient les informations d’état d’un ou
 plusieurs équipements/services
 
-|                                  |              |                                     |
-|----------------------------------|--------------|-------------------------------------|
 | ***FacilityMonitoringDelivery*** | *+Structure* | Description de l’état des services. |
+|----------------------------------|--------------|---------------------------------------|
 
 |              |                         |         |                      |                                                      |
 |--------------|-------------------------|---------|----------------------|------------------------------------------------------|
@@ -8354,9 +8308,8 @@ jour-type Voir <em><strong>ValidityCondition</strong>.</em></td>
 | <span class="mark">FM002</span> | A renseigner uniquement si non inclue dans les exchanges NeTEx |
 |---------------------------------|----------------------------------------------------------------|
 
-|                |              |                                   |
-|----------------|--------------|-----------------------------------|
 | ***Facility*** | *+Structure* | Décrit l’état de la « Facility ». |
+|----------------|--------------|---------------------------------------|
 
 </div>
 
@@ -8510,9 +8463,8 @@ Se reporter au profil NeTex France Accessibilité \[R1\].
 
 #### Description de l’état d’une "Facility"
 
-|                      |              |                                   |
-|----------------------|--------------|-----------------------------------|
 | ***FacilityStatus*** | *+Structure* | Décrit l’état d’une « Facility ». |
+|----------------------|--------------|---------------------------------------|
 
 |                 |                               |         |                                                                                  |                                                                             |
 |-----------------|-------------------------------|---------|----------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -8820,26 +8772,22 @@ Ceci est un Message
 
 #### Messages avec Zones de diffusion
 
-Les champs ‘summary’ et ‘description’ tels que définis au paragraphe
-6.7.1.1 permettent de définir un message général associé à l’évènement
-et ses conséquences.
+Les champs ‘summary’ et ‘description’ tels que définis au paragraphe 6.7.1.1 permettent de définir un message général associé à l’évènement et ses conséquences.
 
-En complément, le profil SIRI France permet de définir des messages
-spécifiques à des zones de diffusion (6.7.4.1.7.6.5). La structure
-PublishingAction permet de definir pour différents canaux de
-communication un message (prompt) et sa zone de diffusion (Affect).
+<span class="mark">En complément, le profil SIRI France permet de définir des messages spécifiques à des zones de diffusion (6.7.4.1.7.6.5). La structure PublishingAction permet de definir pour différents canaux de communication un message (prompt) et sa zone de diffusion (Affect).
+Dans la structure PublishingAction, le profil SIRI France retient uniquement la sous-structure PublishAtScope. La sous-structure PassengerInformationAction n'est pas retenue.
 
-Les tableaux de définition du service Situation Exchange, ci-dessous,
-intègrent les éléments necessaires pour assurer la compatibilité avec
-l’implémentation du Service GM
+De ce fait, le profil France fait le choix suivant pour la communication d'un message :
+- Les messages d'informations associées à une perturbation sont échangés via le champ "Prompt" de la structure "ActionData". L'accès à ce champ est réalisé en parcourant le chemin suivant : `PtSituationElement/PublishingActions/Publish...Action/ActionData/Prompt.`
+- Le chemin `PtSituationElement/PublishingActions/PublishingAction/PassengerInformationAction/ActionData/Prompt` (et plus généralement l'ensemble du PassengerInformationAction) n'est pas utilisé dans le cadre du profil SIRI France.
+</span>
+
+Les tableaux de définition du service Situation Exchange, ci-dessous, intègrent les éléments necessaires pour assurer la compatibilité avec l’implémentation du Service GM.
 
 ### Requête pour l’obtention d’information relatives à des évènements et leurs conséquences
 
-|                                |              |                                                                     |
-|--------------------------------|--------------|---------------------------------------------------------------------|
-| ***SituationExchangeRequest*** | *+Structure* | Requête pour obetnir des informations sur l’état de la « Facility » |
-
-> <span class="mark"></span>
+| ***SituationExchangeRequest*** | *+Structure* | Requête pour obtenir des informations sur une situation |
+|--------------------------------|--------------|---------------------------------------|
 
 <table class="no_h>
 <tbody>
@@ -9072,9 +9020,8 @@ points d’arrêt spécifiés</td>
 
 ### Abonnement pour l’obtention et la mise à jour d’évènements et leurs conséquences
 
-|                                             |              |                                                         |
-|---------------------------------------------|--------------|---------------------------------------------------------|
 | ***Situation ExchangeSubscriptionRequest*** | *+Structure* | Demande d'abonnement au Service d'échange de situation. |
+|---------------------------------------------|--------------|---------------------------------------|
 
 <table>
 <colgroup>
@@ -9143,9 +9090,8 @@ Ce service distingue la définition de la perturbation
 Ces messages ne pas distribués par le service GM si le Service SX est
 implémenté dans un échange.
 
-|                                 |              |                                                                                     |
-|---------------------------------|--------------|-------------------------------------------------------------------------------------|
 | ***SituationExchangeDelivery*** | *+Structure* | Définition et mise à jour des informations de perturbation et messages IV associés. |
+|---------------------------------|--------------|---------------------------------------|
 
 |                                 |                                                      |                                   |                      |                                                                                              |
 |---------------------------------|------------------------------------------------------|-----------------------------------|----------------------|----------------------------------------------------------------------------------------------|
@@ -9157,9 +9103,8 @@ implémenté dans un échange.
 
 #### PtSituationElement
 
-|                          |              |                                |
-|--------------------------|--------------|--------------------------------|
 | ***PtSituationElement*** | *+Structure* | Description d’une perturbation |
+|--------------------------|--------------|--------------------------------|
 
 <table>
 <colgroup>
@@ -9291,8 +9236,7 @@ d'énumération</p>
 <td><em><strong>Publication</strong></em></td>
 <td>0:*</td>
 <td><em>PublicationStatus</em></td>
-<td>Statut de publication. Un ensemble spécifié de sous-états auxquels
-une SITUATION peut être attribuée.</td>
+<td><p>Cet attribut est déprécié dans SIRI en faveur de Progress (voir plus haut).</p><p>Statut de publication. Un ensemble spécifié de sous-états auxquels une SITUATION peut être attribuée.</p></td>
 </tr>
 <tr class="odd">
 <td><em>PtSituationBodyGroup\TemporalGroup</em></td>
@@ -9383,7 +9327,7 @@ durée inconnue.</mark></p>
 <td><em><strong>ReasonGroup</strong></em></td>
 <td><strong>1:1</strong></td>
 <td><em>enum</em></td>
-<td></td>
+<td><mark>Dans le profil France, nous retenons uniquement l'énumération portée par AlertCause au sein du TpegReasonGroup, les autres énumérations étant marquées comme dépréciées depuis SIRI v2.1</mark></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -9543,10 +9487,9 @@ l'utilisation du texte par défaut.</td>
 <tr class="odd">
 <td></td>
 <td><em><strong><mark>Affects</mark></strong></em></td>
-<td>0:1</td>
+<td><mark>1:1</mark></td>
 <td><em>+Structure</em></td>
-<td><p>Identification des parties du réseau de transport affectées par
-la SITUATION.</p>
+<td><p>Liste des objets directement concernés par la SITUATION.</p>
 <p>Voir 6.7.4.1.7.6.</p></td>
 </tr>
 <tr class="even">
@@ -9578,9 +9521,8 @@ la SITUATION.</p>
 
 ##### Description de la structure ‘Source’
 
-|                       |              |                                                              |
-|-----------------------|--------------|--------------------------------------------------------------|
 | ***SituationSource*** | *+Structure* | Information relative à la source des données de la SITUATION |
+|-----------------------|--------------|---------------------------------------|
 
 <table>
 <colgroup>
@@ -9667,160 +9609,150 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 
 </div>
 
-##### Description de l’enum ‘Reason’
+##### Description de l’enum ‘AlertCause’
+ 
+ Les valeurs retenues par le profil SIRI France au sein de l'élément ‘AlertCause’ sont les suivantes :
 
-###### Miscellaneous reasons
-
-Les valeurs retenues par le profil SIRI France sont les suivantes :
-
-| ***Group***   | ***SIRI-SX***                                  |                                                     |
-|---------------|------------------------------------------------|-----------------------------------------------------|
-| Miscellaneous | *unknown*            | *inconnu*                 |
-|               | *incident*           | *incident*                |
-|               | *bombExplosion*      | *explosion d’une bombe*   |
-|               | *securityAlert*      | *alerte sécurité*         |
-|               | *fire*               | *feu*                     |
-|               | *vandalism*          | *vandalisme*              |
-|               | *accident*           | *accident*                |
-|               | *overcrowded*        | *surchargé*               |
-|               | *insufficientDemand* | *Demande insiffisante*    |
-|               | *lightingFailure*    | *Panne d’éclairage*       |
-|               | *serviceFailure*     | *Défaut de service*       |
-|               | *congestion*         | *congestion*              |
-|               | *routeBlockage*      | *Blocage de l’itinéraire* |
-|               | *personOnTheLine*    | *Personne sur la ligne*   |
-|               | *vehicleOnTheLine*   | *Véhicule sur la ligne*   |
-|               | *objectOnTheLine*    | *Objet sur la ligne*      |
-|               | *animalOnTheLine*    | *Animal sur la ligne*     |
-|               | *routeDiversion*     | *Déviation*               |
-|               | *roadClosed*         | *Route fermée*            |
-|               | *roadworks*          | *Travaux*                 |
-|               | *specialEvent*       | *Evénement spécial*       |
-|               | *bridgeStrike*       | *Grève de pont*           |
-|               | *undefinedProblem*   | *Problème non défini*     |
-
-###### Personnel reasons
-
-Les valeurs retenues par le profil SIRI France sont les suivantes :
-
-| ***Group***            | ***SIRI-SX***                                         |                                                              |
-|------------------------|-------------------------------------------------------|--------------------------------------------------------------|
-| ***Personnel Reason*** | *unknown*                   | *Inconnu*                          |
-|                        | *staffSickness*             | *Personnel Malade*                 |
-|                        | *staffAbsence*              | *Personnel absent*                 |
-|                        | *staffInWrongPlace*         | *Personne mal positionné*          |
-|                        | *staffShortage*             | *Manque de personnel*              |
-|                        | *industrialAction*                                    | *Grève.*                                                     |
-|                        | *undefinedPersonnelProblem* | *Problème de personnel non défini* |
-
-|                            | ***SIRI-SX***                                          |                                |
-|----------------------------|--------------------------------------------------------|--------------------------------|
-| ***Personne sub lReason*** | *staffInjury*                | Blessure du personnel          |
-|                            | *contractorStaffInjury*      | Personnel sous-traitant malade |
-|                            | *unofficialIndustrialAction* | Grève officieuse               |
-|                            | staff sickness                                         | Personnel malade               |
-|                            | industrial action                                      | Grève                          |
-
-###### Equipment reasons
-
-Les valeurs retenues par le profil SIRI France sont les suivantes :
-
-|                        | ***SIRI-SX***                                         |                                                              |
-|------------------------|-------------------------------------------------------|--------------------------------------------------------------|
-| ***Equipment Reason*** | *unknown*                   | *inconnu*                          |
-|                        | *signalProblem*             | *Problème de signalisation*        |
-|                        | *signalFailure*             | *Panne de signalisation*           |
-|                        | *derailment*                | *déraillement*                     |
-|                        | *engineFailure*             | *Panne moteur*                     |
-|                        | *breakDown*                 | *Panne*                            |
-|                        | *technicalProblem*          | *Problème technique*               |
-|                        | *repairWork*                | *En réparation*                    |
-|                        | *constructionWork*          | *Travaux de construction*          |
-|                        | *maintenanceWork*           | *En maintenance*                   |
-|                        | *powerProblem*              | *Problème d’alimentation*          |
-|                        | *fuelProblem*               | *Problème de carburant*            |
-|                        | *swingBridgeFailure*        | *Échec du pont tournant*                                     |
-|                        | *escalatorFailure*          | *Panne d’escalator*                |
-|                        | *liftFailure*               | *Panne d’ascenseur*                |
-|                        | *gangwayProblem*            | *Problème de passerelle*                                     |
-|                        | *closedForMaintenance*      | *Fermeture pour maintenance*       |
-|                        | *fuelShortage*              | *Pénurie de carburant*                                       |
-|                        | *deicingWork*               | *Travaux de dégivrage*                                       |
-|                        | *wheelProblem*              | *Problème de roue*                                           |
-|                        | *luggageCarouselProblem*    | *Problème carrousel à bagages*     |
-|                        | *undefinedEquipmentProblem* | *Problème d’équipement non défini* |
-
-|                           | ***SIRI-SX***                                                 |                                                               |
-|---------------------------|---------------------------------------------------------------|---------------------------------------------------------------|
-| ***Equipment Subreason*** | *tractionFailure*                   | *Défaut de la traction*                                       |
-|                           | *defectiveTrain*                    | *Train défectueux*                                            |
-|                           | *slipperyTrack*                     | *Voie glissante*                                              |
-|                           | *trackCircuitProblem*               | *problème de circuit de voie*                                 |
-|                           | *Signal and Switch Failure*         | *Échec du signal et de switch*                                |
-|                           | *brokenRail*                        | *rail cassé*                                                  |
-|                           | *poorRailConditions*                | *mauvaises conditions ferroviaires*                           |
-|                           | *lackOfOperationalStock*            | *manque de stock opérationnel*                                |
-|                           | *defectiveFireAlarmEquipment*       | *Équipement d'alarme incendie défectueux*                     |
-|                           | *defectivePlatformEdgeDoors*        | *portes palières défectueuses*                                |
-|                           | *defectiveCctv*                     | *CCTV défectueux*                                             |
-|                           | *defectivePublicAnnouncementSystem* | *Système d'annonce publique défectueux*                       |
-|                           | *ticketingSystemNotAvailable*       | *Système billetique non disponible* |
-|                           | *levelCrossingFailure*              | *Défaut deu passage à niveau*                                 |
-|                           | *trafficManagementSystemFailure*    | *Défaillance du système de gestion du trafic*                 |
-|                           | *emergencyEngineeringWork*          | *Travaux d'ingénierie d'urgence*                              |
-|                           | *lateFinishToEngineeringWork*       | *finition tardive de travaux d'ingénierie*                    |
-|                           | *overheadWireFailure*               | *Panne de cables aérien*                                      |
-
-###### Environment reason
-
-Les valeurs retenues par le profil SIRI France sont les suivantes :
-
-| ***Group***              | ***SIRI-SX***                                             |                                                               |
-|--------------------------|-----------------------------------------------------------|---------------------------------------------------------------|
-| ***Environment Reason*** | *unknown*                       | *Inconnu*                           |
-|                          | *fog*                           | *broullard*                         |
-|                          | *roughSea*                      | *Mer agitée*                        |
-|                          | *heavySnowFall*                 | *fortes chutes de neige*                                      |
-|                          | *heavyRain*                     | *Fortes pluies*                     |
-|                          | *strongWinds*                   | *Vents forts*                       |
-|                          | *tidalRestrictions*             | *Restriction liée aux marées*       |
-|                          | *highTide*                      | *Marée Haute*                       |
-|                          | *lowTide*                       | *Marée basse*                       |
-|                          | *ice*                           | *Glace*                             |
-|                          | *frozen*                        | *Gel*                               |
-|                          | *hail*                          | *Grêle*                             |
-|                          | *highTemperatures*              | *Température élevée*                |
-|                          | *flooding*                      | *Innondation*                       |
-|                          | *waterlogged*                   | *Sol détrempé*                      |
-|                          | *lowWaterLevel*                 | *niveau d'eau faible*                                         |
-|                          | *highWaterLevel*                | *niveau d'eau élevé*                                          |
-|                          | *fallenLeaves*                  | *Feuilles mortes*                   |
-|                          | *fallenTree*                    | *Chute d’arbres*                    |
-|                          | *landslide*                     | *glissement de terrain*                                       |
-|                          | *undefinedEnvironmentalProblem* | *Problème environmental non défini* |
-
-| ***Group***                         | ***SIRI-SX***                                  |                                                         |
-|-------------------------------------|------------------------------------------------|---------------------------------------------------------|
-| ***Environment Weather Subreason*** | *driftingSnow*       | *Neige à la dérive*                                     |
-|                                     | *blizzardConditions* | *Conditions de blizzard*                                |
-|                                     | *stormDamage*        | *dégâts de tempête*                                     |
-|                                     | *stormConditions*    | *Conditions de tempête*                                 |
-|                                     | *slipperiness*       | *glissance*                                             |
-|                                     | *iceDrift*           | *Dérive de glace*                                       |
-|                                     | *glazedFrost*        | *glacé*                                                 |
-|                                     | *lightningStrike*    | *coup de foudre*                                        |
-|                                     | *avalanches*         | *avalanches*                  |
-|                                     | *flashFloods*        | *crues éclair*                                          |
-| ***Environment ground Subreason***  | *mudslide*           | *glissement de terrain*                                 |
-|                                     | *rockfalls*          | *chutes de pierres*                                     |
-|                                     | *subsidence*         | *affaissement*                                          |
-|                                     | *earthquake­Damage*   | *Dégats Tremblement de terre* |
-|                                     | *sewerOverflow*      | *Débordement d’égout*         |
-|                                     | *grassFire*          | *Feu d’herbe*                 |
-
-###### Autres raisons
-
-*Unknown / UndefinedReasons*
+| **Groupe**                  | ***SIRI-SX***            | **Description** |
+|-----------------------------|--------------------------|-----------------|
+| | *unknown* | Inconnu |
+|sécurité (*safety relevant*) | *securityAlert* | Alerte sécurité |
+|sécurité (*safety relevant*) | *emergencyServicesCall* | Appel des services d'urgence |
+|sécurité (*safety relevant*) | *policeActivity* | Activité policière |
+|sécurité (*safety relevant*) | *policeOrder* | Ordre de la police |
+|sécurité (*safety relevant*) | *fire* | Incendie |
+|sécurité (*safety relevant*) | *cableFire* | Incendie sur un câble |
+|sécurité (*safety relevant*) | *smokeDetectedOnVehicle* | Fumée détectée dans un véhicule |
+|sécurité (*safety relevant*) | *fireAtStation* | Incendie en station          |
+|sécurité (*safety relevant*) | *fireRun* | Appel incendie |
+|sécurité (*safety relevant*) | *fireBrigadeOrder* | Ordre des pompiers |
+|sécurité (*safety relevant*) | *explosion* | Explosion |
+|sécurité (*safety relevant*) | *explosionHazard* | Risque d'explosion |
+|sécurité (*safety relevant*) | *bombDisposal* | Déminage |
+|sécurité (*safety relevant*) | *emergencyMedicalServices* | Urgence médicale |
+|sécurité (*safety relevant*) | *emergencyBrake* | Freinage d'urgence |
+|sécurité (*safety relevant*) | *vandalism* | Vandalisme |
+|sécurité (*safety relevant*) | *cableTheft* | Vol de câble |
+|sécurité (*safety relevant*) | *signalPassedAtDanger* | Signal d'avertissement |
+|sécurité (*safety relevant*) | *stationOverrun* | Dépassement de station |
+|sécurité (*safety relevant*) | *passengersBlockingDoors* | Passager bloquant les portes |
+|sécurité (*safety relevant*) | *defectiveSecuritySystem* | Système de sécurité défectueux |
+|sécurité (*safety relevant*) | *overcrowded* | Surcharge passagère |
+|sécurité (*safety relevant*) | *borderControl* | Police aux frontières |
+|sécurité (*safety relevant*) | *unattendedBag* | Bagage oublié |
+|sécurité (*safety relevant*) | *telephonedThreat* | Menace téléphonique |
+|sécurité (*safety relevant*) | *suspectVehicle* | Véhicule suspect |
+|sécurité (*safety relevant*) | *evacuation* | Évacuation |
+|sécurité (*safety relevant*) | *terroristIncident* | Incident terroriste |
+|sécurité (*safety relevant*) | *publicDisturbance* | Trouble de l'ordre public |
+|problèmes techniques (*technical problem*) | *technicalProblem* | Problème technique |
+|problèmes techniques (*technical problem*) | *vehicleFailure* | Panne du véhicule |
+|problèmes techniques (*technical problem*) | *serviceDisruption* | Interruption de service |
+|problèmes techniques (*technical problem*) | *doorFailure* | Panne d'une porte |
+|problèmes techniques (*technical problem*) | *lightingFailure* | Panne d'éclairage  |
+|problèmes techniques (*technical problem*) | *pointsProblem* | Problème mécanique  |
+|problèmes techniques (*technical problem*) | *pointsFailure* | Panne mécanique |
+|problèmes techniques (*technical problem*) | *signalProblem* | Problème de signalisation |
+|problèmes techniques (*technical problem*) | *signalFailure* | Panne de signalisation |
+|problèmes techniques (*technical problem*) | *overheadWireFailure* | Panne de câble aérien |
+|problèmes techniques (*technical problem*) | *levelCrossingFailure* | Panne d'un passage à niveau |
+|problèmes techniques (*technical problem*) | *trafficManagementSystemFailure* | Panne du système de gestion du trafic |
+|problèmes techniques (*technical problem*) | *engineFailure* | Panne moteur |
+|problèmes techniques (*technical problem*) | *breakdown* | Incident |
+|problèmes techniques (*technical problem*) | *repairWork* | Travaux de réparation |
+|problèmes techniques (*technical problem*) | *constructionWork* | Travaux de construction |
+|problèmes techniques (*technical problem*) | *maintenanceWork* | Travaux de maintenance |
+|problèmes techniques (*technical problem*) | *powerProblem* | Problème d'alimentation |
+|problèmes techniques (*technical problem*) | *trackCircuitProblem* | Problème de circuit |
+|problèmes techniques (*technical problem*) | *swingBridgeFailure* | Panne d'un pont tournant  |
+|problèmes techniques (*technical problem*) | *escalatorFailure* | Panne d'escalator |
+|problèmes techniques (*technical problem*) | *liftFailure* | Panne d'ascenseur |
+|problèmes techniques (*technical problem*) | *gangwayProblem* | Problème de passerelle |
+|problèmes techniques (*technical problem*) | *defectiveVehicle* | Véhicule défectueux |
+|problèmes techniques (*technical problem*) | *brokenRail* | Rail défectueux |
+|problèmes techniques (*technical problem*) | *poorRailConditions* | Rail en mauvaise condition |
+|problèmes techniques (*technical problem*) | *deicingWork* | Travaux de dégivrage |
+|problèmes techniques (*technical problem*) | *wheelProblem* | Problème de roue |
+|trafic (*traffic*) | *routeBlockage* | Route bloquée |
+|trafic (*traffic*) | *congestion* | Embouteillage |
+|trafic (*traffic*) | *heavyTraffic* | Trafic dense |
+|trafic (*traffic*) | *routeDiversion* | Route détournée |
+|trafic (*traffic*) | *roadworks* | Travaux |
+|trafic (*traffic*) | *unscheduledConstructionWork* | Travaux non planifiés |
+|trafic (*traffic*) | *levelCrossingBlocked* | Passage à niveau bloqué |
+|trafic (*traffic*) | *sewerageMaintenance* | Maintenance des canalisations |
+|trafic (*traffic*) | *roadClosed* | Route fermée |
+|trafic (*traffic*) | *roadwayDamage* | Route endommagée |
+|trafic (*traffic*) | *bridgeDamage* | Pont endommagé |
+|trafic (*traffic*) | *personOnTheLine* | Personne sur la voie |
+|trafic (*traffic*) | *objectOnTheLine* | Objet sur la voie |
+|trafic (*traffic*) | *vehicleOnTheLine* | Véhicule sur la voie |
+|trafic (*traffic*) | *animalOnTheLine* | Animal sur la voie |
+|trafic (*traffic*) | *fallenTreeOnTheLine* | Arbre tombé sur la voie |
+|trafic (*traffic*) | *speedRestrictions* | Limitation de vitesse |
+|trafic (*traffic*) | *precedingVehicle* | Véhicule précédent |
+|accident (*accident*) | *accident* | Accidents |
+|accident (*accident*) | *nearMiss* | Quasi-collision |
+|accident (*accident*) | *personHitByVehicle* | Collision avec une personne |
+|accident (*accident*) | *vehicleStruckObject* | Collision avec un objet |
+|accident (*accident*) | *vehicleStruckAnimal* | Collision avec un animal |
+|accident (*accident*) | *derailment* | Déraillement |
+|accident (*accident*) | *collision* | Collision |
+|accident (*accident*) | *levelCrossingAccident* | Incident à un passage à niveau |
+|environnement (*environmental*) | *poorWeather* | Mauvais temps  |
+|environnement (*environmental*) | *fog* | Brouillard |
+|environnement (*environmental*) | *heavySnowfall* | Fortes chutes de neige |
+|environnement (*environmental*) | *heavyRain* | Fortes pluies |
+|environnement (*environmental*) | *strongWinds* | Vents violents |
+|environnement (*environmental*) | *ice* | Glace |
+|environnement (*environmental*) | *hail* | Grêle |
+|environnement (*environmental*) | *highTemperatures* | Températures élevées |
+|environnement (*environmental*) | *flooding* | Inondation |
+|environnement (*environmental*) | *lowWaterLevel* | Niveau d'eau bas |
+|environnement (*environmental*) | *riskOfFlooding* | Risque d'inondation |
+|environnement (*environmental*) | *highWaterLevel* | Niveau d'eau élevé |
+|environnement (*environmental*) | *fallenLeaves* | Chute de feuilles |
+|environnement (*environmental*) | *fallenTree* | Chute d'arbre |
+|environnement (*environmental*) | *landslide* | Glissement de terrain |
+|environnement (*environmental*) | *riskOfLandslide* | Risque de glissement de terrain |
+|environnement (*environmental*) | *driftingSnow* | Neige & Vents |
+|environnement (*environmental*) | *blizzardConditions* | Blizzard |
+|environnement (*environmental*) | *stormDamage* | Dommages causés par une tempête |
+|environnement (*environmental*) | *lightningStrike* | Éclairs |
+|environnement (*environmental*) | *roughSea* | Mer agitée |
+|environnement (*environmental*) | *highTide* | Marée haute |
+|environnement (*environmental*) | *lowTide* | Marée basse |
+|environnement (*environmental*) | *iceDrift* | Glace & Vents |
+|environnement (*environmental*) | *avalanches* | Avalanches |
+|environnement (*environmental*) | *riskOfAvalanches* | Risque d'avalanche |
+|environnement (*environmental*) | *flashFloods* | Inondation éclair |
+|environnement (*environmental*) | *mudslide* | Glissement de boue |
+|environnement (*environmental*) | *rockfalls* | Chutes de pierres |
+|environnement (*environmental*) | *subsidence* | Affaissement |
+|environnement (*environmental*) | *earthquakeDamage* | Dommages causés par un séisme |
+|environnement (*environmental*) | *grassFire* | Incendie de prairie |
+|environnement (*environmental*) | *wildlandFire* | Incendie de forêt |
+|environnement (*environmental*) | *iceOnRailway* | Glace sur les rails |
+|environnement (*environmental*) | *iceOnCarriages* | Glace sur les voitures |
+|évènements spéciaux (*special events*) | *specialEvent* | Évènements spéciaux |
+|évènements spéciaux (*special events*) | *procession* | Marche |
+|évènements spéciaux (*special events*) | *demonstration* | Manifestation |
+|personnel (*personnel*) | *industrialAction* | Grève industrielle |
+|personnel (*personnel*) | *staffSickness* | Personnel malade |
+|personnel (*personnel*) | *staffAbsence* | Personnel absent |
+|personnel (*personnel*) | *operatorCeasedTrading* | Droit de retrait |
+|divers (*miscellaneous*) | *previousDisturbances* | Perturbations précédentes |
+|divers (*miscellaneous*) | *vehicleBlockingTrack* | Véhicule bloquant les voies |
+|divers (*miscellaneous*) | *foreignDisturbances* | Perturbations étrangères |
+|divers (*miscellaneous*) | *waitingForTransferPassengers* | Attente de passagers en transit |
+|divers (*miscellaneous*) | *changeInCarriages* | Changement de véhicules |
+|divers (*miscellaneous*) | *trainCoupling* | Attelage de trains |
+|divers (*miscellaneous*) | *boardingDelay* | Retard à l'embarquement |
+|divers (*miscellaneous*) | *awaitingOncomingVehicle* | Attente de l'arrivée d'un véhicule |
+|divers (*miscellaneous*) | *overtaking* | Dépassement |
+|divers (*miscellaneous*) | *provisionDelay* | Retard dans la mise à disposition |
+|divers (*miscellaneous*) | *miscellaneous* | Divers |
+| | *undefinedAlertCause* | Cause d'alerte non-définie |
 
 ##### Description de l’enum ‘Severity’
 
@@ -9829,9 +9761,11 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 | ***SIRI-SX*** | **Description** |
 |---------------|-----------------|
 | *unknown*     | Inconnu         |
+| *verySlight*  | Très léger      |
 | *slight*      | Léger           |
 | *normal*      | Normal          |
 | *severe*      | Sévère          |
+| *verySevere*  | Très sévère     |
 | *noImpact*    | Pas d’impact    |
 | *undefined*   | Non défini      |
 
@@ -9853,9 +9787,8 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 
 ##### Description de la structure ‘Consequences’
 
-|                     |              |                                      |
-|---------------------|--------------|--------------------------------------|
 | ***PtConsequence*** | *+Structure* | Effet d’une SITUATION sur le service |
+|---------------------|--------------|---------------------------------------|
 
 <table>
 <colgroup>
@@ -9884,6 +9817,13 @@ AffectedVehicleJourney</p>
 <td><em>enum</em></td>
 <td>Gravité de la SITUATION. La valeur par défaut est normale (<mark>cf
 6.7.4.1.4).</mark></td>
+</tr>
+<tr>
+<td>Affects</td>
+<td><em><strong><mark>Affects</mark></strong></em></td>
+<td>0:1</td>
+<td><em>AffectsScope</em></td>
+<td>Liste exhaustive des objets directements concernés par la CONSEQUENCE. Si cette balise n'est pas présente, seuls les objets PtSituationElement\Affects sont considérés pour cette CONSEQUENCE. Voir 6.7.4.1.7.6.</td>  
 </tr>
 <tr class="odd">
 <td><em>Advice</em></td>
@@ -10002,9 +9942,8 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 
 ##### Description de la structure ‘Publishing Actions’
 
-|                       |              |                                                                                                                                                              |
-|-----------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **PublishingActions** | *+Structure* | Indication par type de canal de communication d’actions à réaliser. Permet la diffusion des messages IV complémentaires sur des localisations particulières. |
+|-----------------------|--------------|---------------------------------------|
 
 |                |                                                        |      |              |                                                                          |
 |----------------|--------------------------------------------------------|------|--------------|--------------------------------------------------------------------------|
@@ -10016,70 +9955,21 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 
 ###### Description de la structure “*PublishToWebAction”*
 
-|                          |              |                                             |
-|--------------------------|--------------|---------------------------------------------|
 | ***PublishToWebAction*** | *+Structure* | Paramètres de publication sur le canal Web. |
+|--------------------------|--------------|---------------------------------------|
 
-<table>
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 18%" />
-<col style="width: 5%" />
-<col style="width: 11%" />
-<col style="width: 56%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><em>ParameterisedAction</em></td>
-<td><em><strong><mark>ParameterisedAction</mark></strong></em></td>
-<td>0:1</td>
-<td><em>+Structure</em></td>
-<td><p>Hérité de <em><strong>ParameterisedAction</strong></em>.</p>
-<p><mark><em><strong>ParameterisedAction</strong></em> : utilisé pour
-permettre de définir un message à publier sur le web cf
-6.7.4.1.7.6</mark></p></td>
-</tr>
-<tr class="even">
-<td> </td>
-<td><em><strong><mark>Incidents</mark></strong></em></td>
-<td>0:1</td>
-<td><em>boolean</em></td>
-<td>A inclure dans les listes de SITUATION sur le site Web. La valeur
-par défaut est 'vrai'.</td>
-</tr>
-<tr class="odd">
-<td> </td>
-<td><em><strong><mark>HomePage</mark></strong></em></td>
-<td>0:1</td>
-<td><em>boolean</em></td>
-<td>A inclure sur la page d'accueil du site Web. La valeur par défaut
-est 'faux'.</td>
-</tr>
-<tr class="even">
-<td> </td>
-<td><em><strong><mark>Ticker</mark></strong></em></td>
-<td>0:1</td>
-<td><em>boolean</em></td>
-<td>A inclure dans la bande de défilement mobile. La valeur par défaut
-est 'faux'</td>
-</tr>
-<tr class="odd">
-<td> </td>
-<td><em><strong><mark>SocialNetwork</mark></strong></em></td>
-<td>0:*</td>
-<td><em>string</em></td>
-<td>A inclure dans le RÉSEAU social indiqué par ce nom. La valeur
-possible pourrait être "twitter.com", "facebook.com", "vk.com" et ainsi
-de suite</td>
-</tr>
-</tbody>
-</table>
+|                |                           |      |              |                                           |
+|----------------|---------------------------|------|--------------|-------------------------------------------|
+| *ParameterisedAction* | ***<span class="mark">ParameterisedAction</span>***     | 0:1 | *+Structure* | <p>Hérité de <em><strong>ParameterisedAction</strong></em>.</p><p><span class="mark"><em><strong>ParameterisedAction</strong></em> : utilisé pour permettre de définir un message à publier sur le web cf.6.7.4.1.7.6</span></p>         |
+|                | ***<span class="mark">Incidents</span>***  | 0:1 | *boolean* | À inclure dans les listes de SITUATION sur le site Web. La valeur par défaut est 'vrai'. |
+|                | ***<span class="mark">HomePage</span>*** | 0:1 | *boolean* | À inclure sur la page d'accueil du site Web. La valeur par défaut est 'faux'.   |
+|                | ***<span class="mark">Ticker</span>***    | 0:1 | *boolean* | À inclure dans la bande de défilement mobile. La valeur par défaut est 'faux'          |
+|                | ***<span class="mark">SocialNetwork</span>***      | 0:\* | *string* | À inclure dans le RÉSEAU social indiqué par ce nom. La valeur possible pourrait être "facebook.com", "linkedin.com", "x.com" et ainsi de suite.            |
 
 ###### Description de la structure “*PublishToMobileAction”*
 
-|                             |              |                                                          |
-|-----------------------------|--------------|----------------------------------------------------------|
 | ***PublishToMobileAction*** | *+Structure* | Paramètres de publication sur le canal Téléphone Mobile. |
+|-----------------------------|--------------|---------------------------------------|
 
 <table>
 <colgroup>
@@ -10121,9 +10011,8 @@ défaut est ’false’.</td>
 
 ###### Description de la structure “PublishToDisplayAction”
 
-|                              |              |                                                                     |
-|------------------------------|--------------|---------------------------------------------------------------------|
 | ***PublishToDisplayAction*** | *+Structure* | <span class="mark">Paramètres pour diffuser sur un afficheur</span> |
+|------------------------------|--------------|---------------------------------------|
 
 <table>
 <colgroup>
@@ -10165,9 +10054,8 @@ Défaut 'false'.</td>
 
 ###### Description de la structure « *NotifyByEmailAction”*
 
-|                           |              |                                                                       |
-|---------------------------|--------------|-----------------------------------------------------------------------|
 | ***NotifyByEmailAction*** | *+Structure* | <span class="mark">Paramètres pour diffuser sur</span> le canal Email |
+|---------------------------|--------------|---------------------------------------|
 
 <table>
 <colgroup>
@@ -10221,9 +10109,8 @@ permettre de définir un message à publier via email cf
 
 ###### Description de la structure “*NotifyBySmsAction”*
 
-|                         |              |                                            |
-|-------------------------|--------------|--------------------------------------------|
 | ***NotifyBySmsAction*** | *+Structure* | Paramètres de publication sur le canal SMS |
+|-------------------------|--------------|---------------------------------------|
 
 <table style="width:100%;">
 <colgroup>
@@ -10285,9 +10172,8 @@ supplémentaires.</p>
 
 ###### Description de la structure ‘Affect’
 
-|               |              |                                                   |
-|---------------|--------------|---------------------------------------------------|
 | ***Affects*** | *+Structure* | Périmètre de la SITUATION et de ses consequences. |
+|---------------|--------------|---------------------------------------|
 
 <table>
 <colgroup>
@@ -10430,6 +10316,65 @@ ci-dessous.</p>
 </tbody>
 </table>
 
+**Exemples d'utilisation de la structure 'Affect'**
+
+*Association avec un ou plusieurs zones d'embarquement*
+```xml
+<siri:Affects>
+  <siri:StopPoints>
+    <siri:AffectedStopPoint>
+      <siri:StopPointRef>FR:78197:Quay:3534:LOC</siri:StopPointRef>
+    </siri:AffectedStopPoint>
+    <siri:AffectedStopPoint>
+      <siri:StopPointRef>FR:78197:Quay:3535:LOC</siri:StopPointRef>
+    </siri:AffectedStopPoint>
+  </siri:StopPoints>
+</siri:Affects>
+```
+
+*Association avec un ou plusieurs lieux d'arrêts*
+```xml
+<siri:Affects>
+  <siri:StopPlaces>
+    <siri:AffectedStopPlace>
+      <siri:StopPlaceRef>FR:78197:StopPlace:3534<:LOC/siri:StopPlaceRef>
+    </siri:AffectedStopPlace>
+    <siri:AffectedStopPlace>
+      <siri:StopPlaceRef>FR:78197:StopPlace:3535:LOC</siri:StopPlaceRef>
+    </siri:AffectedStopPlace>
+  </siri:StopPoints>
+</siri:Affects>
+```
+
+*Association avec une zone d'embarquement mais seulement pour une/des ligne(s) donnée(s)*
+```xml
+<siri:Affects>
+  <siri:StopPoints>
+    <siri:AffectedStopPoint>
+      <siri:StopPointRef>FR:78197:Quay:3534:LOC</siri:StopPointRef>
+
+      <siri:Lines>
+        <siri:AffectedLine>
+          <siri:LineRef>FR:78197:Line:00673:LOC</siri:LineRef>
+        </siri:AffectedLine>
+      </siri:Lines>
+    </siri:AffectedStopPoint>
+  </siri:StopPoints>
+</siri:Affects>
+```
+
+*Association avec une ou plusieurs lignes*
+```xml
+</siri:AffectedNetwork>
+  <siri:AffectedLine>
+    <siri:LineRef>FR:78197:Line:00673:LOC</siri:LineRef>
+  </siri:AffectedLine>
+  <siri:AffectedLine>
+    <siri:LineRef>FR:78197:Line:89121:LOC</siri:LineRef>
+  </siri:AffectedLine>
+</siri:AffectedNetwork>
+```
+
 <h7>Description de la structure AffectedNetwork</h7>
 
 <table>
@@ -10532,9 +10477,8 @@ ne sont pas disponibles.</p>
 
 <h7>Description de la structure AffectedStopPoint</h7>
 
-|                         |              |                                                                  |
-|-------------------------|--------------|------------------------------------------------------------------|
 | ***AffectedStopPoint*** | *+Structure* | Anotation au point d’arrêt topologique impacté par la SITUATION. |
+|-------------------------|--------------|---------------------------------------|
 
 <table>
 <colgroup>
@@ -10682,9 +10626,8 @@ impactés par la SITUATION.</td>
 
 <h7>Description de la structure “AffectedLine”</h7>
 
-|                    |              |                                                 |
-|--------------------|--------------|-------------------------------------------------|
 | ***AffectedLine*** | *+Structure* | Annotation à la LINE impactée par la SITUATION. |
+|--------------------|--------------|---------------------------------------|
 
 <table>
 <colgroup>
@@ -10762,26 +10705,29 @@ l’action</mark>.</p></td>
 </tbody>
 </table>
 
-|            |                                             |     |                 |                                                                            |
-|------------|---------------------------------------------|-----|-----------------|----------------------------------------------------------------------------|
 | *Operator* | ***<span class="mark">OperatorRef</span>*** | 0:1 | *→OperatorCode* | <span class="mark">Identifiant de l’operateur (au sens transmodel)</span>. |
+|------------|---------------------------------------------|-----|-----------------|---------------|
 
 ###### Description de la structure ParameterisedAction
 
-|                           |              |     |
-|---------------------------|--------------|-----|
-| ***ParameterisedAction*** | *+Structure* |     |
+| ***ParameterisedAction*** | *+Structure* |    |
+|---------------------------|--------------|----|
 
 |                         |                                                                           |      |               |              |                                                                                    |
 |-------------------------|---------------------------------------------------------------------------|------|---------------|--------------|------------------------------------------------------------------------------------|
-| *SimpleActionStructure* | ***<span class="mark">ActionStatus</span>***                              | 0:1  |               | *enum*       | Status de l’Action. cf 6.7.4.1.7.7.1.                                              |
-|                         | ***<span class="mark">Description</span>***                               | 0:1  |               | *nlString*   | Description de l’action.                                                           |
-|                         | ***<span class="mark">ActionData</span>***                                | 0:\* |               | *+Structure* | Information associée à l’action, cf lignes ci-dessous.                             |
-|                         | **➞ *<span class="mark">Name</span>***                                    | 1:1  | *xsd:NMTOKEN* |              | Nom de l’action.                                                                   |
-|                         | **➞*<span class="mark">Prompt</span>***                                   | 0:\* | *nlString*    |              | <span class="mark">Libéllé du message associé au publishingAction.</span>          |
-|                         | <span class="mark"></span>**➞*<span class="mark">PublishAtScope</span>*** | 0:1  | *+Structure*  |              | <span class="mark">Zone de diffusion du message ‘Prompt’.</span>                   |
-|                         | ⇉ ***<span class="mark">ScopeType</span>***                               | 0:1  | *enum*        |              | <span class="mark">Type de l’action (cf 6.7.4.1.5).</span>                         |
-|                         | ⇉ ***<span class="mark">Affects</span>***                                 | 0:1  | *+Structure*  |              | <span class="mark">Zone de diffusion du message ‘*prompt’*, cf 6.7.4.1.7.6.</span> |
+| *SimpleActionStructure* | ***<span class="mark">ActionStatus</span>***                              | 0:1  | *enum*       | Status de l’Action. cf 6.7.4.1.7.7.1.                                              |
+|                         | ***<span class="mark">Description</span>***                               | 0:1  | *nlString*   | Description de l’action.                                                           |
+|                         | ***<span class="mark">ActionData</span>***                                | 0:\* | *+Structure* | Information associée à l’action, cf lignes ci-dessous.                             |
+|                         | *➞ <span class="mark">Name</span>*                                    | 0:1  | *xsd:NMTOKEN* | Nom de l’action.                                                                   |
+|                         | *➞ <span class="mark">Type</span>*                                    | 1:1  | *xsd:NMTOKEN* | Type de données de l’action.                                                                   |
+|                         | *➞ <span class="mark">Value</span>*                                    | 0:\*  | *any* | Valeur pour l’action.                                                                   |
+|                         | *➞<span class="mark">Prompt</span>*                                   | 0:\* | *nlString*    | <span class="mark">Libéllé du message associé au publishingAction.</span>          |
+|                         | **➞*<span class="mark">PublishAtScope</span>*** | 0:1  | *+Structure*  | <span class="mark">Zone de diffusion du message ‘Prompt’.</span>                   |
+|                         | ⇉ *<span class="mark">ScopeType</span>*                               | 1:1  | *enum*        | <span class="mark">Type de l’action (cf 6.7.4.1.5).</span>                         |
+|                         | ⇉ *<span class="mark">Affects</span>*                                 | 1:1  | *+Structure*  | <span class="mark">Zone de diffusion du message ‘*prompt’*, cf 6.7.4.1.7.6.</span> |
+|                         | *PublicationWindow*                                    | 0:\*  | *→ClosedTimestampRangeStructure* | Définit un certain nombre de fenêtres temporelles de publication. Lorsqu'il n'est pas envoyé, les fenêtres temporelles de publication de niveau supérieur sont valides. Peut être remplacé par un niveau inférieur.                                                                   |
+|                         | *➞StartTime*                                    | 1:1  | *xsd:dateTime* | Le timestamp du début de publication (inclusif)                                                                   |
+|                         | *➞EndTime*                                    | 1:1  | *xsd:dateTime* | Le timestamp de la fin de publication (inclusif)                                                                   |
 
 <h7>Description de l’enum ‘ActionStatus’</h7>
 
@@ -10799,9 +10745,8 @@ Les valeurs retenues par le profil SIRI France sont les suivantes :
 
 ### Structure générale des requêtes
 
-|                                                |              |                                 |
-|------------------------------------------------|--------------|---------------------------------|
 | ***<span class="mark">ServiceRequest</span>*** | *+Structure* | Structure générale des requêtes |
+|------------------------------------------------|--------------|--------------------------------|
 
 |                       |                                                               |                                   |                                   |                                                                                                            |
 |-----------------------|---------------------------------------------------------------|-----------------------------------|-----------------------------------|------------------------------------------------------------------------------------------------------------|
@@ -10827,9 +10772,8 @@ dans le cadre du protocole d’accord). Cette structure propose une
 séparation très fine des différentes notions, mais sera généralement
 utilisée de façon très simplifiée.
 
-|                                                       |              |                                    |
-|-------------------------------------------------------|--------------|------------------------------------|
 | ***<span class="mark">ServiceRequestContext</span>*** | *+Structure* | Propriétés générales des requêtes. |
+|-------------------------------------------------------|--------------|------------------------------------|
 
 <table>
 <colgroup>
@@ -10992,249 +10936,68 @@ non limité).</mark></td>
 <u>Note</u> : Cette structure n'est pas utilisée dans le cadre des
 échanges SOAP (point de départ avec ***xxxDelivery***).
 
-|                                                 |     |              |                                              |
-|-------------------------------------------------|-----|--------------|----------------------------------------------|
-| ***<span class="mark">ServiceDelivery</span>*** |     | *+Structure* | Structure générique de réponse aux requêtes. |
+| ***<span class="mark">ServiceDelivery</span>*** | *+Structure* | Structure générique de réponse aux requêtes. |
+|-------------------------------------------------|--------------|---------------------------------------|
 
-|                       |                                                                            |                                   |                    |          |                                                                                                                                                       |
-|-----------------------|----------------------------------------------------------------------------|-----------------------------------|--------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| *Attrib­utes*          | ***<span class="mark">srsName</span>***                                    | 0:1                               | *xsd:string*       |          | Identifiant du système de projection (pour la localisation spatiale) : probablement Lambert 2 étendu (soit EPSG:27582 -NTF(Paris)/Lambert II étendu). |
-| *Log*                 | ***<span class="mark">Response­Timestamp</span>***                          | 1:1                               | *xsd:dateTime*     |          | Heure de production de la réponse.                                                                                                                    |
-| *End­­poi­nt proper­ties* | ***<span class="mark">ProducerRef</span>***                                | 0:1                               | *Participant­Code*  |          | Identifiant du producteur de la réponse (reprendre le code \[*fournisseur*\] des identifiants du profil FR)                                           |
-|                       |                                                                            |                                   |                    |          |                                                                                                                                                       |
-|                       | ***<span class="mark">Response­Message­Identifier</span>***                  | **<span class="mark">1:1</span>** | *Message­Qualifier* |          | Identifiant unique du message de réponse.                                                                                                             |
-|                       | ***<span class="mark">Request­Message­Ref</span>***                          | **<span class="mark">1:1</span>** | *Message­Qualifier* |          | Identifiant de la requête à laquelle on répond.                                                                                                       |
-| *Status*              | ***<span class="mark">Status</span>***                                     | **<span class="mark">1:1</span>** | *xsd:boolean*      |          | Indique si la requête a pu être traitée avec succès ou non.                                                                                           |
-|                       | ***<span class="mark">Error­Condition</span>***                             | 0:1                               | *See below*        |          | Signalement d’erreur (voir le paragraphe sur la gestion des erreurs).                                                                                 |
-|                       | **➞ *<span class="mark">choi</span>x***                                    | -1:1                              |                    |          |                                                                                                                                                       |
-|                       | ***<span class="mark">a) Capability­Not­Supported­Error</span>***             | 0:1                               | *+Error*           |          | Requête non supportée.                                                                                                                                |
-|                       | ***<span class="mark">b) OtherError</span>***                              | *0:1*                             |                    | *+Error* | Autre erreur.                                                                                                                                         |
-|                       | **➞ *<span class="mark">Description</span>***                              | 0:1                               | *ErrorDescription* |          | Description de l’erreur .                                                                                                                             |
-| *Payload*             | ***choix***                                                                | -1:1                              |                    |          | <span class="mark">Plusieurs des structures suivantes peuvent se succéder, mais elles doivent être toutes du même type.</span>                        |
-|                       | ***<span class="mark">a) Production­Timetable­Delivery</span>***             | 0:\*                              | *+Structure*       |          | Voir SIRI Partie 3 – Production Timetable.                                                                                                            |
-|                       | ***<span class="mark">b) Estimated­Timetable­Delivery</span>***              | 0:\*                              | *+Structure*       |          | Voir SIRI Partie 3 – Estimated Timetable.                                                                                                             |
-|                       | ***<span class="mark">d) Stop­Monitoring­Delivery</span>***                  | 0:\*                              | *+Structure*       |          | Voir SIRI Partie 3 – Stop Monitoring.                                                                                                                 |
-|                       | ***<span class="mark">e) Vehicle­Monitoring­Delivery</span>***               | 0:\*                              | *+Structure*       |          | Voir SIRI Partie 3 – Vehicle Monitoring.                                                                                                              |
-|                       | ***<span class="mark">g) Connection­Monitoring­Feeder­Delivery</span>***      | 0:\*                              | *+Structure*       |          | Voir SIRI Partie 3 – Connection Monitoring.                                                                                                           |
-|                       | ***<span class="mark">h) Connection­Monitoring­Distributor­Delivery</span>*** | 0:\*                              | *+Structure*       |          | Voir SIRI Partie 3 – Connection Monitoring.                                                                                                           |
-|                       | ***<span class="mark">i) General­Message­Delivery</span>***                  | 0:\*                              | *+Structure*       |          | Voir SIRI Partie 3 – General Message.                                                                                                                 |
-|                       | ***<span class="mark">j) FacilityMonitoring­Delivery</span>***              | 0:\*                              | *+Structure*       |          | Voir SIRI Partie 4 – Facility Monitoring.                                                                                                             |
-|                       | ***<span class="mark">k) SituationExchange­ Delivery</span>***              | 0:\*                              | *+Structure*       |          | Voir SIRI Partie 5 – Situation Exchange.                                                                                                              |
+|                                                 |     |              |                      |                                       |
+|-------------------------------------------------|-----|--------------|----------------------|---------------------------------------|
+| *Attrib­utes* | ***<span class="mark">srsName</span>*** | 0:1 | *xsd:string* | Identifiant du système de projection (pour la localisation spatiale) : probablement Lambert 2 étendu (soit EPSG:27582 -NTF(Paris)/Lambert II étendu). |
+| *Log* | ***<span class="mark">Response­Timestamp</span>*** | 1:1 | *xsd:dateTime* | Heure de production de la réponse. |
+| *End­­poi­nt proper­ties* | ***<span class="mark">ProducerRef</span>*** | 0:1 | *Participant­Code* | Identifiant du producteur de la réponse (reprendre le code \[*fournisseur*\] des identifiants du profil FR) |
+|        | ***<span class="mark">Response­Message­Identifier</span>*** | **<span class="mark">1:1</span>** | *Message­Qualifier* | Identifiant unique du message de réponse. |
+|        | ***<span class="mark">Request­Message­Ref</span>*** | **<span class="mark">1:1</span>** | *Message­Qualifier* | Identifiant de la requête à laquelle on répond. |
+| *Status* | ***<span class="mark">Status</span>*** | **<span class="mark">1:1</span>** | *xsd:boolean* | Indique si la requête a pu être traitée avec succès ou non. |
+|        | ***<span class="mark">Error­Condition</span>*** | 0:1 | *See below* | Signalement d’erreur (voir le paragraphe sur la gestion des erreurs). |
+|        | **➞ <span class="mark">choix</span>** | -1:1 | | |
+|        | ***<span class="mark">a) Capability­Not­Supported­Error</span>*** | 0:1 | *+Error* | Requête non supportée. |
+|        | ***<span class="mark">b) OtherError</span>*** | 0:1 |*+Error* | Autre erreur. |
+|        | **➞ *<span class="mark">Description</span>*** | 0:1 | *ErrorDescription* | Description de l’erreur . |
+| *Payload* | **➞ *choix*** | -1:1 | | <span class="mark">Plusieurs des structures suivantes peuvent se succéder, mais elles doivent être toutes du même type.</span> |
+|                       | ***<span class="mark">a) Production­Timetable­Delivery</span>*** | 0:\* | *+Structure* | Voir SIRI Partie 3 – Production Timetable. |
+|                       | ***<span class="mark">b) Estimated­Timetable­Delivery</span>*** | 0:\* | *+Structure* | Voir SIRI Partie 3 – Estimated Timetable. |
+|                       | ***<span class="mark">d) Stop­Monitoring­Delivery</span>*** | 0:\* | *+Structure* | Voir SIRI Partie 3 – Stop Monitoring. |
+|                       | ***<span class="mark">e) Vehicle­Monitoring­Delivery</span>*** | 0:\* | *+Structure* | Voir SIRI Partie 3 – Vehicle Monitoring. |
+|                       | ***<span class="mark">g) Connection­Monitoring­Feeder­Delivery</span>*** | 0:\* | *+Structure* | Voir SIRI Partie 3 – Connection Monitoring. |
+|                       | ***<span class="mark">h) Connection­Monitoring­Distributor­Delivery</span>*** | 0:\* | *+Structure* | Voir SIRI Partie 3 – Connection Monitoring. |
+|                       | ***<span class="mark">i) General­Message­Delivery</span>*** | 0:\* | *+Structure* | Voir SIRI Partie 3 – General Message. |
+|                       | ***<span class="mark">j) FacilityMonitoring­Delivery</span>*** | 0:\* | *+Structure* | Voir SIRI Partie 4 – Facility Monitoring. |
+|                       | ***<span class="mark">k) SituationExchange­ Delivery</span>*** | 0:\* | *+Structure* | Voir SIRI Partie 5 – Situation Exchange. |
 
 ### Structure des réponses aux services
 
-|                                             |     |              |                                               |
-|---------------------------------------------|-----|--------------|-----------------------------------------------|
-| ***<span class="mark">xxxDelivery</span>*** |     | *+Structure* | Structure générique des réponses aux services |
+| ***<span class="mark">xxxDelivery</span>*** | *+Structure* | Structure générique des réponses aux services |
+|---------------------------------------------|--------------|---------------------------------------|
 
-<table>
-<colgroup>
-<col style="width: 0%" />
-<col style="width: 13%" />
-<col style="width: 0%" />
-<col style="width: 17%" />
-<col style="width: 0%" />
-<col style="width: 5%" />
-<col style="width: 12%" />
-<col style="width: 0%" />
-<col style="width: 49%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td colspan="2"><em>Log</em></td>
-<td
-colspan="2"><em><strong><mark>Response­Timestamp</mark></strong></em></td>
-<td colspan="2">1:1</td>
-<td><em>xsd:dateTime</em></td>
-<td colspan="2">Date et heure de production de la réponse.</td>
-</tr>
-<tr class="even">
-<td colspan="2"><em>Endpoint properties</em></td>
-<td
-colspan="2"><em><strong><mark>Request­Message­Ref</mark></strong></em></td>
-<td colspan="2"><strong><mark>1:1</mark></strong></td>
-<td><em>Message­Qualifier</em></td>
-<td colspan="2">Référence de la requête.</td>
-</tr>
-<tr class="odd">
-<td colspan="2"></td>
-<td
-colspan="2"><em><strong><mark>SubscriberRef</mark></strong></em></td>
-<td colspan="2">0:1</td>
-<td><em>Participant­Code</em></td>
-<td colspan="2"><p>Identification du souscripteur.</p>
-<p><mark>Obligatoire en cas d’abonnement.</mark></p></td>
-</tr>
-<tr class="even">
-<td colspan="2"></td>
-<td
-colspan="2"><em><strong><mark>Subscription­Ref</mark></strong></em></td>
-<td colspan="2">0:1</td>
-<td><em>Subscription­Qualifier</em></td>
-<td colspan="2"><p>Identification de la souscription.</p>
-<p><mark>Obligatoire en cas d’abonnement.</mark></p></td>
-</tr>
-<tr class="odd">
-<td colspan="2"><em>Status</em></td>
-<td colspan="2"><em><strong><mark>Status</mark></strong></em></td>
-<td colspan="2"><strong><mark>1:1</mark></strong></td>
-<td><em>xsd:boolean</em></td>
-<td colspan="2">Indique si la requête a pu être traitée avec succès ou
-non.</td>
-</tr>
-<tr class="even">
-<td colspan="2"></td>
-<td
-colspan="2"><em><strong><mark>ErrorCondition</mark></strong></em></td>
-<td colspan="2">0:1</td>
-<td><em>+Structure</em></td>
-<td colspan="2">Signalement d’erreur (voir le paragraphe sur la gestion
-des erreurs).</td>
-</tr>
-<tr class="odd">
-<td colspan="2"></td>
-<td colspan="2"><strong>➞</strong> <em>choix</em></td>
-<td colspan="2">-1:1</td>
-<td></td>
-<td colspan="2">Choix parmi les codes d’erreur</td>
-</tr>
-<tr class="even">
-<td colspan="2"></td>
-<td colspan="2"><em><strong><mark>a)
-ServiceNotAvailableError</mark></strong></em></td>
-<td colspan="2">0:1</td>
-<td></td>
-<td colspan="2">Le service fonctionnel n’est pas disponible (mais il est
-toujours capable de donner une réponse).</td>
-</tr>
-<tr class="odd">
-<td colspan="2"></td>
-<td colspan="2"><em><strong><mark>b)
-Capability­Not­Supported­Error</mark></strong></em></td>
-<td>0:1</td>
-<td colspan="2"><em>+ Error</em></td>
-<td>Fonction non supportée.</td>
-<td></td>
-</tr>
-<tr class="even">
-<td colspan="2"></td>
-<td colspan="2"><em><strong><mark>c)
-Access­Not­Allowed­Error</mark></strong></em></td>
-<td>0:1</td>
-<td colspan="2"><em>+Error</em></td>
-<td>Accès refusé.</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td colspan="2"></td>
-<td colspan="2"><em><strong><mark>d)
-InvalidDataReferencesError</mark></strong></em></td>
-<td>0:1</td>
-<td colspan="2"><em>+Error</em></td>
-<td>La requête contient des références à des identifiants qui ne sont
-pas connus.</td>
-<td></td>
-</tr>
-<tr class="even">
-<td colspan="2"></td>
-<td colspan="2"><em><strong><mark>e)
-BeyondDataHorizon</mark></strong></em></td>
-<td>0:1</td>
-<td colspan="2"><em>+Error</em></td>
-<td>La période ou la souscription est en dehors de la période couvert
-par le service.</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td colspan="2"></td>
-<td colspan="2"><em><strong><mark>f)
-No­Info­For­Topic­Error</mark></strong></em></td>
-<td>0:1</td>
-<td colspan="2"><em>+Error</em></td>
-<td>Pas d’information pour cette requête.</td>
-<td></td>
-</tr>
-<tr class="even">
-<td colspan="2"></td>
-<td colspan="2"><em><strong><mark>g)
-ParametersIgnoredError</mark></strong></em></td>
-<td>0:1</td>
-<td colspan="2"><em>+Error</em></td>
-<td>La requête contient des paramètres qui ne sont pas supportés par le
-producteur. Une réponse a été fournie mais certains paramètres ont été
-ignorés.</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td colspan="2"></td>
-<td colspan="2"><em><strong><mark>h)
-UnknownExtensionsError</mark></strong></em></td>
-<td>0:1</td>
-<td colspan="2"><em>+Error</em></td>
-<td>La requête contient des extensions qui ne sont pas supportés par le
-producteur. Une réponse a été fournie mais certains paramètres ont été
-ignorés.</td>
-<td></td>
-</tr>
-<tr class="even">
-<td colspan="2"></td>
-<td colspan="2"><em><strong><mark>i)
-Allowed­Resource­Usage­Exceeded­Error</mark></strong></em></td>
-<td>0:1</td>
-<td colspan="2"><em>+Error</em></td>
-<td>Réponse trop volumineuse.</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td colspan="2"></td>
-<td colspan="2"><em><strong><mark>j)
-OtherError</mark></strong></em></td>
-<td>0:1</td>
-<td colspan="2"><em>+Error</em></td>
-<td>Autre erreur.</td>
-<td></td>
-</tr>
-<tr class="even">
-<td colspan="2"></td>
-<td colspan="2"><strong>➞
-<em><mark>Description</mark></em></strong></td>
-<td colspan="2">0:1</td>
-<td><em>Error­Description</em></td>
-<td colspan="2">Description de l’erreur.</td>
-</tr>
-<tr class="odd">
-<td colspan="2"></td>
-<td colspan="2"><em><strong><mark>ValidUntil</mark></strong></em></td>
-<td colspan="2">0:1</td>
-<td><em>xsd:dateTime</em></td>
-<td colspan="2">Date de validité maximale de la réponse.</td>
-</tr>
-<tr class="even">
-<td colspan="2"></td>
-<td
-colspan="2"><em><strong><mark>Shortest­Possible­Cycle</mark></strong></em></td>
-<td colspan="2">0:1</td>
-<td><em>Positive­Duration­Type</em></td>
-<td colspan="2">Intervalle minimal de mise à jour de la donnée.</td>
-</tr>
-<tr class="odd">
-<td colspan="2"><em>any</em></td>
-<td colspan="2"><em><strong>Extensions</strong></em></td>
-<td colspan="2">0:1</td>
-<td><em>any</em></td>
-<td colspan="2"><mark>Emplacement pour extension utilisateur (cf
-5.4.2.2)</mark></td>
-</tr>
-</tbody>
-</table>
+|                                                 |     |              |                      |                                       |
+|-------------------------------------------------|-----|--------------|----------------------|---------------------------------------|
+| *Log* | ***<span class="mark">Response­Timestamp</span>*** | 1:1 | *xsd:dateTime* | Date et heure de production de la réponse. |
+| *Endpoint properties* | ***<span class="mark">Request­Message­Ref</span>*** | **<span class="mark">1:1</span>** | *Message­Qualifier* | Référence de la requête. |
+|   | ***<span class="mark">SubscriberRef</span>*** | 0:1 | *Participant­Code* | Identification du souscripteur. <span class="mark">Obligatoire en cas d’abonnement.</span> |
+|   | ***<span class="mark">Subscription­Ref</span>*** | 1:1 | *Subscription­Qualifier* | Identification de la souscription. <span class="mark">Obligatoire en cas d’abonnement.</span> |
+| *Status* | ***<span class="mark">	Status</span>*** | **<span class="mark">1:1</span>** | *xsd:boolean* | Indique si la requête a pu être traitée avec succès ou non. |
+|   | ***<span class="mark">ErrorCondition</span>*** | 1:1 | *xsd:dateTime* | Date et heure de production de la réponse. |
+|   | **➞ *<span class="mark">choix</span>*** | -1:1 |   | Choix parmi les codes d’erreur. |
+|   | ***<span class="mark">a) ServiceNotAvailableError</span>*** | 0:1 |   | Le service fonctionnel n’est pas disponible (mais il est toujours capable de donner une réponse). |
+|   | ***<span class="mark">b) Capability­Not­Supported­Error</span>*** | 0:1 | *+Error* | Fonction non supportée. |
+|   | ***<span class="mark">c) Access­Not­Allowed­Error</span>*** | 0:1 | *+Error* | Accès refusé. |
+|   | ***<span class="mark">d) InvalidDataReferencesError</span>*** | 0:1 | *+Error* | La requête contient des références à des identifiants qui ne sont pas connus. |
+|   | ***<span class="mark">e) BeyondDataHorizon</span>*** | 0:1 | *+Error* | La période ou la souscription est en dehors de la période couvert par le service. |
+|   | ***<span class="mark">f) No­Info­For­Topic­Error</span>*** | 0:1 | *+Error* | Pas d’information pour cette requête. |
+|   | ***<span class="mark">g) ParametersIgnoredError</span>*** | 0:1 | *+Error* | La requête contient des paramètres qui ne sont pas supportés par le producteur. Une réponse a été fournie mais certains paramètres ont été ignorés. |
+|   | ***<span class="mark">h) UnknownExtensionsError</span>*** | 0:1 | *+Error* | La requête contient des extensions qui ne sont pas supportés par le producteur. Une réponse a été fournie mais certains paramètres ont été ignorés. |
+|   | ***<span class="mark">i) Allowed­Resource­Usage­Exceeded­Error</span>*** | 0:1 | *+Error* | Réponse trop volumineuse. |
+|   | ***<span class="mark">j) OtherError</span>*** | 0:1 | *+Error* | Autre erreur. |
+|   | **➞ *<span class="mark">Description</span>*** | 0:1 | *Error­Description* | Description de l’erreur. |
+|   | ***<span class="mark">ValidUntil</span>*** | 0:1 | *xsd:dateTime* | Date de validité maximale de la réponse. |
+|   | ***<span class="mark">Shortest­Possible­Cycle</span>*** | 0:1 | *Positive­Duration­Type* | Intervalle minimal de mise à jour de la donnée. |
+| *any* | ***Extensions*** | 0:1 | *any* | <span class="mark">Emplacement pour extension utilisateur (cf 5.4.2.2)</span> |
 
 ## Abonnement
 
 ### Structure générale des abonnements
 
-|                                                     |              |                                                                       |
-|-----------------------------------------------------|--------------|-----------------------------------------------------------------------|
 | ***<span class="mark">SubscriptionRequest</span>*** | *+Structure* | <span class="mark">Structure générale de requêtes d’abonnement</span> |
+|-----------------------------------------------------|--------------|---------------------------------------|
 
 |                       |                                                                            |                                   |                    |                                                                                                                                                                                        |
 |-----------------------|----------------------------------------------------------------------------|-----------------------------------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -11256,9 +11019,8 @@ colspan="2"><em><strong><mark>Shortest­Possible­Cycle</mark></strong></em></td
 
 ## Réponse aux requêtes d’abonnement
 
-|                            |              |                                     |
-|----------------------------|--------------|-------------------------------------|
 | ***SubscriptionResponse*** | *+Structure* | Réponse à une demande d’abonnement. |
+|----------------------------|--------------|-------------------------------------|
 
 <table class="no_h">
 <tbody>
@@ -11333,9 +11095,8 @@ d'abonnement.</mark></p></td>
 
 ### Qualificateur (état) de réponse
 
-|                                                |              |                             |
-|------------------------------------------------|--------------|-----------------------------|
 | ***<span class="mark">Response­Status</span>*** | *+Structure* | Qualificateur des réponses. |
+|------------------------------------------------|--------------|-----------------------------|
 
 <table>
 <colgroup>
@@ -11473,9 +11234,8 @@ Allowed­Resource­Usage­Exceeded­Error</mark></strong></em></td>
 
 ### Requête de cloture d’abonnement
 
-|                                                              |              |                              |
-|--------------------------------------------------------------|--------------|------------------------------|
 | ***<span class="mark">TerminateSubscriptionRequest</span>*** | *+Structure* | Demande de fin d’abonnement. |
+|--------------------------------------------------------------|--------------|------------------------------|
 
 <table>
 <colgroup>
@@ -11551,9 +11311,8 @@ Allowed­Resource­Usage­Exceeded­Error</mark></strong></em></td>
 
 ### Réponse aux demandes de clôture de souscription
 
-|                                                               |              |                                                                        |
-|---------------------------------------------------------------|--------------|------------------------------------------------------------------------|
 | ***<span class="mark">TerminateSubscriptionResponse</span>*** | *+Structure* | <span class="mark">Réponse aux demandes de fin de souscription.</span> |
+|---------------------------------------------------------------|--------------|---------------------------------------|
 
 |                       |                                                                |                                   |                         |                                                                            |
 |-----------------------|----------------------------------------------------------------|-----------------------------------|-------------------------|----------------------------------------------------------------------------|
@@ -11682,9 +11441,8 @@ erreurs).</td>
 
 ### Requête de vérification d'état
 
-|                                                    |              |                                                          |
-|----------------------------------------------------|--------------|----------------------------------------------------------|
 | ***<span class="mark">CheckStatusRequest</span>*** | *+Structure* | <span class="mark">Requête de vérification d’état</span> |
+|----------------------------------------------------|--------------|---------------------------------------|
 
 |            |                                                   |                                   |                    |                                                                       |
 |------------|---------------------------------------------------|-----------------------------------|--------------------|-----------------------------------------------------------------------|
@@ -11696,9 +11454,8 @@ erreurs).</td>
 
 ### Réponse aux requêtes de vérification d'état
 
-|                                                     |              |                                               |
-|-----------------------------------------------------|--------------|-----------------------------------------------|
 | ***<span class="mark">CheckStatusResponse</span>*** | *+Structure* | Réponses aux requêtes de vérification d’état. |
+|-----------------------------------------------------|--------------|---------------------------------------|
 
 |            |                                                             |                                   |                    |                                                        |
 |------------|-------------------------------------------------------------|-----------------------------------|--------------------|--------------------------------------------------------|
@@ -11904,8 +11661,8 @@ et permet l'échange des données.</td>
 
 ##  Requête d’information sur les horaires commandés/théoriques
 
-| ***<span class="mark">ProductionTimetable­Request</span>*** |     | *+Structure* | Requête d’information sur les horaires commandés/théoriques |
-|------------------------------------------------------------|-----|--------------|-------------------------------------------------------------|
+| ***<span class="mark">ProductionTimetable­Request</span>*** |  *+Structure* | Requête d’information sur les horaires commandés/théoriques |
+|------------------------------------------------------------|---------------|-------------------------------------------------------------|
 
 | *Attributes*          | ***<span class="mark">Version</span>***             | 1:1                               | *VersionString*            | Version du service “ ***ProductionTimetable*** ”, intégrant le numéro de version de profil (voir 5.9)                                                                                                                   |
 |-----------------------|-----------------------------------------------------|-----------------------------------|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
