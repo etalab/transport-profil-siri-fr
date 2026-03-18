@@ -30,5 +30,6 @@ L'équipe du Point d'Accès National aux données de transport (PAN, transport.d
 Cet espace de travail est ouvert à tout contributeur sans besoin d'inscription au GT7. Cependant, si vous souhaitez participer aux débats sur les demandes de changement, merci de vous rapprocher de l'animatrice du GT7, [@TuThoThai](https://github.com/TuThoThai).
 
 ## Comment contribuer
+
 Pour toute question, commentaire ou ouvrir une discussion plus large, merci d'ouvrir un ticket dans les `Issues`.
 Pour toute demande de changement, merci de faire une `Pull Request` qui vise la branche `v2.0-wip`. Elle est la seule branche de travail du profil France de SIRI.
