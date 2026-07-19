@@ -1804,8 +1804,7 @@ référence à la course datée elle-même.</p></td>
 <td>DirectionRef</td>
 <td><em><strong>DirectionRef</strong></em> est un code (code ouvert,
 limité à "<em>aller</em>" ou "<em>retour</em>" ou vide, sans format
-particulier donc). Normalement non retenu par le profil SIRI France,
-mais parfois obligatoire dans SIRI</td>
+particulier donc). Lorsqu'optionel dans SIRI, il n'est pas pas retenu dans le profil France (i.e., il doit être renseigné lorsqu'obligatoire dans la XSD de SIRI).</td>
 </tr>
 <tr class="odd">
 <td>FormatRef</td>
